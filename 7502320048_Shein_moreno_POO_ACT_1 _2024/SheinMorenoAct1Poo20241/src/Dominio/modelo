@@ -1,0 +1,262 @@
+@startuml
+
+title Concesionario de Vehiculos
+
+class Usuario{
+ -String dni; 
+ -String nombre;
+ -String telefono:
+ -String direccion;
+ -String correo;
+ +Usuario();
+ +getDni()
+ +setDni()
+ +getNombre()
+ +setNombre()
+ +getTelefono()
+ +setTelefono()
+ +getDireccion()
+ +setDireccion()
+ +getCorreo()
+ +setCorreo()
+  
+ 
+}
+class Cliente{
+-String historialMantemiento;
+-Date programacionCitaCervicio;
+-Double pagosEnLinea;
+-SistemaGestion sistemaGestion;
+-EntregaVehiculoUsado entregavehiculousado;
++Cliente();
++getHistorialMantemiento()
++getProgramarCitasCervicios()
++getPagosEnLinea()
++getSistemaGestion sistemaGestion()
++getEntregaVehiculoUsado entregavehiculousado()
++setPagosEnLinea()
+
+}
+class Empleado{
+-String rol;
+-List <Usuario>listaEmpleados;
+-Vendedor vendedor;
++Empleado();
++getRol()
++setRol()
++getListaEmpleados()
++getVendedor vendedor()
+
+
+}
+class Vendedor{
+-String nombreCliente;
+-Double venta;
+-String vehiculoVendido ;
+-Date fechaVentas;
+-Date garantia;
+-Empleado empleado;
+-CatalogoVehiculos catalogoVehiculos;
+-List<CatalogoVehiculos> listaVehiculos;
++Vendedor();
++getNombreCliente()
++getVenta()
++getVehiculoVendido()
++getFechaVenta()
++getGarantia()
++getEmpleado empleado()
++getCatalogoVehiculos vehiculos()
++getListaVehiculos()
++setNombreCliente()
++setVenta()
++setVehiculoVendido()
++setFechaVenta()
++setGarantia()
+
+}
+
+
+class EntregaVehiculoUsado{
+-String modelo;
+-String marca;
+-String matricula;
+-Double preciotasacion;
+-Date fechaEntrga;
+-Cliente cliente;
++EntregaVehiculoUsado();
++getModelo()
++getMarca()
++getMatricula()
++getPrecioTasacion()
++getFechaEntrega()
++getCliente cliente()
++setModelo()
++setMarca()
++setMatricula()
++setPrecioTasacion()
++setFechaEntrega()
++setCliente cliente()
+
+}
+class CatalogoVehiculos{
+-String modelo;
+-String marca;
+-String cilindrada;
+-String precio;
+-List <CatalogoVehiculos> listavehiculos;
+-Vendedor vendedor;
+-List<OpcionesAdicionales> opcionesadicionales;
++CatalogoVehiculos();
++getModelo()
++getMarca()
++getCilindrada()
++getPrecio()
++getListvehiculos8()
++getVendedor vendedor()
++getOpcionesadicionales()
++setModelo()
++setMarca()
++setCilindrada()
++setPrecio()
+
+}
+class OpcionesAdicionales{
+-String pinturaMetalizada;
+-String aireAcondicionado;
+-List<OpcionesAdicionales> opcionesAdicionales;
+-CatalogoVehiculos catalogoVehiulos;
++OpcionesAdicionales();
++getPinturaMetalizada()
++getAireAcondicionado()
++getOpcionesAdicionales()
++getCatalogoVehiculos catalogovehiulos()
++setPinturaMetalizada()
++setAireAcondicionado()
+
+
+}
+class InventarioPiezas{
+-String nombre;
+-String modelo;
+-String marca;
+-String precioCompra;
+-String precioVenta;
+-String tipo;
+-Int unidades;
+-Int numeroEntradaPiezas;
+-Int numeroSalidapiezas;
+-String descripcionRemplazoPieza;
+-String nombreQuienEntrega;
+-List <InventarioPiezas> inventarioPiezas;
+-MantenimientoPreventivo mantenimientopreventivo;
+-MantenimientoCorrectivo mantenimientocorrectivo;
++inventarioPiezas();
++getNombre()
++setNombre()
++getModelo()
++setModelo()
++getMarca()
++setMarca()
++getPrecioCompra()
++setPrecioCompra()
++getPrecioVenta()
++setPrecioVenta()
++getTipo()
++setTipo()
++getUnidades()
++setUnidades()
++getEntradaPiezas()
++setEntradaPiezas()
++getSalidaPiezas()
++setSalidaPiezas()
++getDescripcionRemplazoPieza()
++setDescripcionRemplazoPieza()
++getNombreQuienEntrega()
++setNombreQuienEntrega()
++getInventarioPiezas()
++getMantenimientoPreventivo mantenimientopreventivo()
++getMantenimientoCorrectivo mantenimientocorrectivo()
+
+}
+
+class SistemaGestion{
+-Date fechasMantenimientos;
+-String garantiasVehiculo;
+-String notificacionClinetes;
+-Cliente cliente;
+-MantenimientoPreventivo mantenimientopreventivo;
+-MantenimientoCorrectivo mantenimientocorrectivo;
++SistemaGestion();
++getFechasMantenimientos()
++getGarantiasVehiculo()
++getNotificacionClinetes()
++getCliente cliente
++getMantenimientoPreventivo mantenimientopreventivo()
++getMantenimientoCorrectivo mantenimientocorrectivo()
++setFechasMantenimientos()
++setGarantiasVehiculo()
++setNotificacionClinetes()
+}
+
+
+class MantenimientoPreventivo{
+-Date mantenimientoProgramado;
+-String drescripcionMatenimiento;
+-String quienRealizoMantenimiento;
+-String nombrePieza;
+-Double precioMantenimiento;
+-SistemaGestion sistemagestion;
+-List <InventarioPiezas> inventarioPiezas;
++MantenimientoPreventivo();
++getMantenimientoProgramado
++getDrescripcionMatenimiento()
++getQuienRealizoMatenimiento()
++getNombrePieza()
++getPrecioMantenimiento()
++getSistemaGestion sistemagestion()
++getInventarioPiezas()
++setMantenimientoProgramado
++setDrescripcionMatenimiento()
++setQuienRealizoMatenimiento()
++setNombrePieza()
++setPrecioMantenimiento()
+}
+
+
+class MantenimientoCorrectivo{
+-String drescripcionMatenimiento;
+-String quienRealizoMantenimiento;
+-String nombrePieza;
+-Double precioPieza;
+-Double precioMantenimiento;
+-SistemaGestion sistemagestion;
+-List <InventarioPiezas> inventarioPiezas;
++MantenimientoCorrectivo();
++getDrescripcionMatenimiento()
++getQuienRealizoMantemineto()
++getNombrePieza()
++getPrecioPieza()
++getPrecioMantenimiento()
++getSistemaGestion sistemagestion()
++getInventarioPiezas()
++setDrescripcionMatenimiento()
++setQuienRealizoMantemineto()
++setNombrePieza()
++setPrecioPieza()
+
+}
+
+
+Usuario<|--Cliente :Es un
+Usuario<|--Empleado :Es un
+SistemaGestion"1"--"*"MantenimientoCorrectivo : tiene
+CatalogoVehiculos"1"--"1..*"OpcionesAdicionales : Tiene
+Cliente"1"--"1"EntregaVehiculoUsado : Puede entregar
+MantenimientoPreventivo"1"--*"*"InventarioPiezas :Puede utilizar
+Empleado"1"--"1..*"Vendedor : Es un
+Cliente"1"--"1" SistemaGestion :Tiene
+SistemaGestion"1"--"*"MantenimientoPreventivo: tiene
+MantenimientoCorrectivo"1"--*"*"InventarioPiezas :Puede utilizar
+Vendedor"1"--"1"CatalogoVehiculos:Tiene
+
+
