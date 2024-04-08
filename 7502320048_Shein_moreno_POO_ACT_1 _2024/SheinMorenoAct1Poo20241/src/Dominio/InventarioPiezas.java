@@ -11,6 +11,7 @@ import java.util.List;
  * @author ASUS
  */
 public class InventarioPiezas {
+private int id;    
 private String nombre;
 private String modelo;
 private String marca;
@@ -31,7 +32,8 @@ public InventarioPiezas (){
     
 }
 
-    public InventarioPiezas(String nombre, String modelo, String marca, Double precioCompra, Double precioVenta, String tipo, int unidades, int numeroEntradaPiezas, int numeroSalidapiezas, String descripcionRemplazoPieza, String nombreQuienEntrega,InventarioPiezas inventariopiezas, MantenimientoPreventivo mantenimientopreventivo, MantenimientoCorrectivo mantenimientocorrectivo) {
+    public InventarioPiezas(int id ,String nombre, String modelo, String marca, Double precioCompra, Double precioVenta, String tipo, int unidades, int numeroEntradaPiezas, int numeroSalidapiezas, String descripcionRemplazoPieza, String nombreQuienEntrega,InventarioPiezas inventariopiezas, MantenimientoPreventivo mantenimientopreventivo, MantenimientoCorrectivo mantenimientocorrectivo) {
+        this.id = id;
         this.nombre = nombre;
         this.modelo = modelo;
         this.marca = marca;
@@ -47,6 +49,15 @@ public InventarioPiezas (){
         this.mantenimientopreventivo = mantenimientopreventivo;
         this.mantenimientocorrectivo = mantenimientocorrectivo;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public String getNombre() {
         return nombre;
@@ -150,7 +161,7 @@ public InventarioPiezas (){
 
     @Override
     public String toString() {
-        return "InventarioPiezas{" + "nombre=" + nombre + ",\n modelo=" + modelo + ",\n marca=" + marca + ",\n precioCompra=" + precioCompra + ",\n precioVenta=" + precioVenta + ",\n tipo=" + tipo + ",\n unidades=" + unidades + ",\n numeroEntradaPiezas=" + numeroEntradaPiezas + ",\n numeroSalidapiezas=" + numeroSalidapiezas + ",\n descripcionRemplazoPieza=" + descripcionRemplazoPieza + ",\n nombreQuienEntrega=" + nombreQuienEntrega + '}';
+        return "InventarioPiezas{" + "id=" + id +"\n nombre=" + nombre + ",\n modelo=" + modelo + ",\n marca=" + marca + ",\n precioCompra=" + precioCompra + ",\n precioVenta=" + precioVenta + ",\n tipo=" + tipo + ",\n unidades=" + unidades + ",\n numeroEntradaPiezas=" + numeroEntradaPiezas + ",\n numeroSalidapiezas=" + numeroSalidapiezas + ",\n descripcionRemplazoPieza=" + descripcionRemplazoPieza + ",\n nombreQuienEntrega=" + nombreQuienEntrega + '}';
     }
     
     

@@ -12,6 +12,7 @@ import java.util.List;
  * @author ASUS
  */
 public class SistemaGestion {
+private int id;
 private Date fechasMantenimientos;
 private String garantiasVehiculo;
 private String notificacionClinetes;
@@ -24,7 +25,8 @@ public SistemaGestion (){
     
 }
 
-    public SistemaGestion(Date fechasMantenimientos, String garantiasVehiculo, String notificacionClinetes, Cliente cliente, MantenimientoPreventivo mantenimientopreventivo, MantenimientoCorrectivo mantenimientocorrectivo) {
+    public SistemaGestion(int id ,Date fechasMantenimientos, String garantiasVehiculo, String notificacionClinetes, Cliente cliente, MantenimientoPreventivo mantenimientopreventivo, MantenimientoCorrectivo mantenimientocorrectivo) {
+        this.id = id;
         this.fechasMantenimientos = fechasMantenimientos;
         this.garantiasVehiculo = garantiasVehiculo;
         this.notificacionClinetes = notificacionClinetes;
@@ -32,6 +34,15 @@ public SistemaGestion (){
         this.mantenimientopreventivo = mantenimientopreventivo;
         this.mantenimientocorrectivo = mantenimientocorrectivo;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public Date getFechasMantenimientos() {
         return fechasMantenimientos;
@@ -71,7 +82,7 @@ public SistemaGestion (){
 
     @Override
     public String toString() {
-        return "SistemaGestion{" + "fechasMantenimientos=" + fechasMantenimientos + ",\n garantiasVehiculo=" + garantiasVehiculo + ",\n notificacionClinetes=" + notificacionClinetes + '}';
+        return "SistemaGestion{" + "id="+id+"\n fechasMantenimientos=" + fechasMantenimientos + ",\n garantiasVehiculo=" + garantiasVehiculo + ",\n notificacionClinetes=" + notificacionClinetes + '}';
     }
 
 

@@ -11,7 +11,7 @@ import java.util.List;
  * @author ASUS
  */
 public class CatalogoVehiculos {
-    
+private int id;    
 private String modelo;
 private String marca;
 private String cilindrada;
@@ -23,7 +23,8 @@ private List<OpcionesAdicionales> opcionesAdicionales;
 public CatalogoVehiculos (){
     
 }
-public CatalogoVehiculos (String modelo,String marca,String cilindrada,String precio,CatalogoVehiculos listaVehiculos,Vendedor vendedor,OpcionesAdicionales opcionesAdicionales ){
+public CatalogoVehiculos (int id,String modelo,String marca,String cilindrada,String precio,CatalogoVehiculos listaVehiculos,Vendedor vendedor,OpcionesAdicionales opcionesAdicionales ){
+  this.id = id;
   this.modelo = modelo;
   this.marca = marca; 
   this.cilindrada = cilindrada;
@@ -33,6 +34,15 @@ public CatalogoVehiculos (String modelo,String marca,String cilindrada,String pr
   this.opcionesAdicionales.add(opcionesAdicionales); 
   
 }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 public String getModelo(){
     return modelo;
 }
@@ -72,7 +82,7 @@ public List<OpcionesAdicionales> getOpcionesAdicionales(){
 
     @Override
     public String toString() {
-        return "CatalogoVehiculos{" + " modelo=" + modelo + ",\n marca=" + marca + ",\n cilindrada=" + cilindrada + ", \n precio=" + precio + '}';
+        return "CatalogoVehiculos{" + "id="+id+"\n modelo=" + modelo + ",\n marca=" + marca + ",\n cilindrada=" + cilindrada + ", \n precio=" + precio + '}';
     }
 
 

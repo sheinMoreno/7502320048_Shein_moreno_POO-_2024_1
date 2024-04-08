@@ -11,6 +11,7 @@ import java.util.List;
  * @author ASUS
  */
 public class OpcionesAdicionales {
+private int id;
 private String pinturaMetalizada;
 private String aireAcondicionado;
 private List <OpcionesAdicionales> opcionesAdicionales;
@@ -20,12 +21,22 @@ public OpcionesAdicionales (){
     
 }
 
-    public OpcionesAdicionales(String pinturaMetalizada, String aireAcondicionado, OpcionesAdicionales opcionesAdicionales, CatalogoVehiculos catalogovehiulos) {
+    public OpcionesAdicionales(int id,String pinturaMetalizada, String aireAcondicionado, OpcionesAdicionales opcionesAdicionales, CatalogoVehiculos catalogovehiulos) {
+        this.id = id;
         this.pinturaMetalizada = pinturaMetalizada;
         this.aireAcondicionado = aireAcondicionado;
         this.opcionesAdicionales.add(opcionesAdicionales);
         this.catalogovehiulos = catalogovehiulos;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public String getPinturaMetalizada() {
         return pinturaMetalizada;
@@ -53,7 +64,7 @@ public OpcionesAdicionales (){
 
     @Override
     public String toString() {
-        return "OpcionesAdicionales{" + "pinturaMetalizada=" + pinturaMetalizada + ",\n aireAcondicionado=" + aireAcondicionado + '}';
+        return "OpcionesAdicionales{" + "id="+id+",\n pinturaMetalizada=" + pinturaMetalizada + ",\n aireAcondicionado=" + aireAcondicionado + '}';
     }
     
         

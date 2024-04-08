@@ -15,6 +15,7 @@ import java.util.List;
 
 
 public class Vendedor  {
+private int id;
 private String nombreCliente;
 private Double venta;
 private String vehiculoVendido ;
@@ -28,7 +29,8 @@ public Vendedor(){
     
 }
 
-    public Vendedor(String nombreCliente, Double venta, String vehiculoVendido, Date fechaVentas, Date garantia, Empleado empleado, CatalogoVehiculos catalogoVehiculos, CatalogoVehiculos listaVehiculos) {
+    public Vendedor(int id,String nombreCliente, Double venta, String vehiculoVendido, Date fechaVentas, Date garantia, Empleado empleado, CatalogoVehiculos catalogoVehiculos, CatalogoVehiculos listaVehiculos) {
+        this.id = id;
         this.nombreCliente = nombreCliente;
         this.venta = venta;
         this.vehiculoVendido = vehiculoVendido;
@@ -38,6 +40,15 @@ public Vendedor(){
         this.catalogoVehiculos = catalogoVehiculos;
         this.listaVehiculos.add(listaVehiculos);
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public String getNombreCliente() {
         return nombreCliente;
@@ -93,7 +104,7 @@ public Vendedor(){
 
     @Override
     public String toString() {
-        return "Vendedor{" + "nombreCliente=" + nombreCliente + ",\n venta=" + venta + ",\n vehiculoVendido=" + vehiculoVendido + ",\n fechaVentas=" + fechaVentas + ", \ngarantia=" + garantia + '}';
+        return "Vendedor{" + "id="+id+",\n nombreCliente=" + nombreCliente + ",\n venta=" + venta + ",\n vehiculoVendido=" + vehiculoVendido + ",\n fechaVentas=" + fechaVentas + ", \ngarantia=" + garantia + '}';
     }
     
 

@@ -50,6 +50,7 @@ class Empleado{
 
 }
 class Vendedor{
+-Int id;
 -String nombreCliente;
 -Double venta;
 -String vehiculoVendido ;
@@ -77,6 +78,7 @@ class Vendedor{
 
 
 class EntregaVehiculoUsado{
+-Int id;
 -String modelo;
 -String marca;
 -String matricula;
@@ -99,6 +101,7 @@ class EntregaVehiculoUsado{
 
 }
 class CatalogoVehiculos{
+-Int id;
 -String modelo;
 -String marca;
 -String cilindrada;
@@ -121,6 +124,7 @@ class CatalogoVehiculos{
 
 }
 class OpcionesAdicionales{
+-Int id;
 -String pinturaMetalizada;
 -String aireAcondicionado;
 -List<OpcionesAdicionales> opcionesAdicionales;
@@ -136,6 +140,7 @@ class OpcionesAdicionales{
 
 }
 class InventarioPiezas{
+-Int id;
 -String nombre;
 -String modelo;
 -String marca;
@@ -180,6 +185,7 @@ class InventarioPiezas{
 }
 
 class SistemaGestion{
+-Int id;
 -Date fechasMantenimientos;
 -String garantiasVehiculo;
 -String notificacionClinetes;
@@ -200,6 +206,7 @@ class SistemaGestion{
 
 
 class MantenimientoPreventivo{
+-Int id;
 -Date mantenimientoProgramado;
 -String drescripcionMatenimiento;
 -String quienRealizoMantenimiento;
@@ -224,6 +231,7 @@ class MantenimientoPreventivo{
 
 
 class MantenimientoCorrectivo{
+-Int id;
 -String drescripcionMatenimiento;
 -String quienRealizoMantenimiento;
 -String nombrePieza;
@@ -247,8 +255,8 @@ class MantenimientoCorrectivo{
 }
 
 
-Usuario<|--Cliente :Es un
-Usuario<|--Empleado :Es un
+Usuario<|--Cliente :Hereda
+Usuario<|--Empleado :Hereda
 SistemaGestion"1"--"*"MantenimientoCorrectivo : tiene
 CatalogoVehiculos"1"--"1..*"OpcionesAdicionales : Tiene
 Cliente"1"--"1"EntregaVehiculoUsado : Puede entregar

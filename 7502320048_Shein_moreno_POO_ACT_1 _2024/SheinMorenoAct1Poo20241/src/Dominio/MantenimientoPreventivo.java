@@ -12,6 +12,7 @@ import java.util.List;
  * @author ASUS
  */
 public class MantenimientoPreventivo {
+private int id;
 private Date mantenimientoProgramado;
 private String drescripcionMatenimiento;
 private String quienRealizoMantenimiento;
@@ -24,7 +25,8 @@ private MantenimientoPreventivo (){
     
 }
 
-    public MantenimientoPreventivo(Date mantenimientoProgramado, String drescripcionMatenimiento, String quienRealizoMantenimiento, String nombrePieza, Double precioMantenimiento, SistemaGestion sistemagestion, InventarioPiezas inventarioPiezas) {
+    public MantenimientoPreventivo(int id, Date mantenimientoProgramado, String drescripcionMatenimiento, String quienRealizoMantenimiento, String nombrePieza, Double precioMantenimiento, SistemaGestion sistemagestion, InventarioPiezas inventarioPiezas) {
+        this.id = id;
         this.mantenimientoProgramado = mantenimientoProgramado;
         this.drescripcionMatenimiento = drescripcionMatenimiento;
         this.quienRealizoMantenimiento = quienRealizoMantenimiento;
@@ -33,6 +35,15 @@ private MantenimientoPreventivo (){
         this.sistemagestion = sistemagestion;
         this.inventarioPiezas.add(inventarioPiezas);
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
 
     public Date getMantenimientoProgramado() {
         return mantenimientoProgramado;
@@ -76,7 +87,7 @@ private MantenimientoPreventivo (){
 
     @Override
     public String toString() {
-        return "MantenimientoPreventivo{" + "mantenimientoProgramado=" + mantenimientoProgramado + ",\n drescripcionMatenimiento=" + drescripcionMatenimiento + ",\n quienRealizoMantenimiento=" + quienRealizoMantenimiento + ",\n nombrePieza=" + nombrePieza + ",\n precioMantenimiento=" + precioMantenimiento + '}';
+        return "MantenimientoPreventivo{" + "id="+id+"\nmantenimientoProgramado=" + mantenimientoProgramado + ",\n drescripcionMatenimiento=" + drescripcionMatenimiento + ",\n quienRealizoMantenimiento=" + quienRealizoMantenimiento + ",\n nombrePieza=" + nombrePieza + ",\n precioMantenimiento=" + precioMantenimiento + '}';
     }
 
 

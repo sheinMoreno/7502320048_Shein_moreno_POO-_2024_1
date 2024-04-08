@@ -11,6 +11,7 @@ import java.util.Date;
  * @author ASUS
  */
 public class EntregaVehiculoUsado {
+private int id;    
 private String modelo;
 private String marca;
 private String matricula;
@@ -22,13 +23,22 @@ public EntregaVehiculoUsado (){
     
 }
 
-   public EntregaVehiculoUsado(String modelo, String marca, String matricula, Double precioTasacion, Date fechaEntrega, Cliente cliente) {
+   public EntregaVehiculoUsado(int id,String modelo, String marca, String matricula, Double precioTasacion, Date fechaEntrega, Cliente cliente) {
+        this.id =id;
         this.modelo = modelo;
         this.marca = marca;
         this.matricula = matricula;
         this.precioTasacion = precioTasacion;
         this.fechaEntrega = fechaEntrega;
         this.cliente = cliente;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getModelo() {
@@ -77,7 +87,7 @@ public EntregaVehiculoUsado (){
 
     @Override
     public String toString() {
-        return "EntregaVehiculoUsado{" + "modelo=" + modelo + ",\n marca=" + marca + ",\n matricula=" + matricula + ",\n precioTasacion=" + precioTasacion + ",\n fechaEntrega=" + fechaEntrega + '}';
+        return "EntregaVehiculoUsado{" + "id"+id+",\n modelo=" + modelo + ",\n marca=" + marca + ",\n matricula=" + matricula + ",\n precioTasacion=" + precioTasacion + ",\n fechaEntrega=" + fechaEntrega + '}';
     }
  
         

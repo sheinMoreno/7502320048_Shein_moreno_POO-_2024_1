@@ -11,6 +11,7 @@ import java.util.List;
  * @author ASUS
  */
 public class MantenimientoCorrectivo {
+private int id;
 private String drescripcionMatenimiento;
 private String quienRealizoMantenimiento;
 private String nombrePieza;
@@ -23,7 +24,8 @@ public MantenimientoCorrectivo (){
 
 }    
 
-    public MantenimientoCorrectivo(String drescripcionMatenimiento, String quienRealizoMantenimiento, String nombrePieza, Double precioPieza, Double precioMantenimiento, SistemaGestion sistemagestion, InventarioPiezas inventarioPiezas ) {
+    public MantenimientoCorrectivo(int id,String drescripcionMatenimiento, String quienRealizoMantenimiento, String nombrePieza, Double precioPieza, Double precioMantenimiento, SistemaGestion sistemagestion, InventarioPiezas inventarioPiezas ) {
+        this.id = id;
         this.drescripcionMatenimiento = drescripcionMatenimiento;
         this.quienRealizoMantenimiento = quienRealizoMantenimiento;
         this.nombrePieza = nombrePieza;
@@ -32,6 +34,23 @@ public MantenimientoCorrectivo (){
         this.sistemagestion = sistemagestion;
         this.inventarioPiezas.add(inventarioPiezas);
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getQuienRealizoMantenimiento() {
+        return quienRealizoMantenimiento;
+    }
+
+    public void setQuienRealizoMantenimiento(String quienRealizoMantenimiento) {
+        this.quienRealizoMantenimiento = quienRealizoMantenimiento;
+    }
+    
 
     public String getDrescripcionMatenimiento() {
         return drescripcionMatenimiento;
@@ -83,7 +102,7 @@ public MantenimientoCorrectivo (){
 
     @Override
     public String toString() {
-        return "MantenimientoCorrectivo{" + "drescripcionMatenimiento=" + drescripcionMatenimiento + ",\n qienRealizoMantenimiento=" + quienRealizoMantenimiento + ",\n nombrePieza=" + nombrePieza + ",\n precioPieza=" + precioPieza + ",\n precioMantenimiento=" + precioMantenimiento + '}';
+        return "MantenimientoCorrectivo{" + "id="+id+"\n drescripcionMatenimiento=" + drescripcionMatenimiento + ",\n qienRealizoMantenimiento=" + quienRealizoMantenimiento + ",\n nombrePieza=" + nombrePieza + ",\n precioPieza=" + precioPieza + ",\n precioMantenimiento=" + precioMantenimiento + '}';
     }
     
     
