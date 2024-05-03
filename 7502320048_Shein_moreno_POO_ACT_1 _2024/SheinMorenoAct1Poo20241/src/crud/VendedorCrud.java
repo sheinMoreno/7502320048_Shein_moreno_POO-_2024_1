@@ -18,95 +18,98 @@ import model.ICrudModel;
  */
 public class VendedorCrud implements ICrudModel<Vendedor>{
 
-    private HashMap<String, Vendedor> bdVendedor;
+    private HashMap<Integer, Vendedor> bdVendedor;
 
     @Override
     public void agregar(Vendedor objeto) throws Exception {
-        try {
-            if(bdVendedor.containsKey(objeto.getId()))
-              throw new Exception("El usuario ya esta registrado");  
+      try {
+            if (bdVendedor.containsKey(objeto.getId())) {
+                throw new Exception("El vendedor no esta tregistrado.");  
+            }
+     
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
-    }   
+        }  
+    }
 
     @Override
     public Vendedor buscar(Vendedor objeto) throws Exception {
         try {
-            if(!bdVendedor.containsKey( objeto.getId())){
-                throw new Exception("El objeto no existe." );
+            if (!bdVendedor.containsKey(objeto.getId())) {
+                throw new Exception("El vendedor no existe.");
+                   
             }
             return bdVendedor.get(objeto.getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
-       
     }
 
     @Override
     public void editar(Vendedor objeto) throws Exception {
-        try {
-            if(!bdVendedor.containsKey(objeto.getId())){
-                throw new Exception("El objeto no esta registrado."); 
+       try {
+            if (!bdVendedor.containsKey(objeto.getId())) {
+                throw new Exception("El vendedor no esta registrado.");
+                
             }
-            bdVendedor.put(objeto.getId(),objeto);
-        } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        
-    
-
-    @Override
-    public void eliminar(Vendedor objeto) throws Exception {
-        try {
-            if(!bdVendedor.containsKey(objeto.getId())){
-                throw new Exception("el objeto no existe");
-            }
-            bdVendedor.remove(objeto.getId());
-            
+            bdVendedor.put(objeto.getId(),objeto); 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-         
+    }
+
+    @Override
+    public void eliminar(Vendedor objeto) throws Exception {
+       try {
+            if (bdVendedor.containsKey(objeto.getId())) {
+                throw new Exception("El objeto no existe.");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } 
     }
 
     @Override
     public List<Vendedor> listarTodo() throws Exception {
-        List<Vendedor> vendedores =new ArrayList<>();
+       List<Vendedor> vendedor = new ArrayList<>();
         try {
             if(bdVendedor.isEmpty()){
-                throw new Exception("No existe el elemento en la lista.");
+                throw new UnsupportedOperationException("No existe el elemento en la lista.");
             }
-            for (Map.Entry<String, Vendedor> dni : bdVendedor.entrySet()) {
-                Object key = dni.getKey();
-                Vendedor vendedor= dni.getValue();
-                vendedores.add(vendedor);
+            for (Map.Entry<Integer, Vendedor> entry : bdVendedor.entrySet()) {
+                int key = entry.getKey();
+                 Vendedor vendedores = entry.getValue();
+                 vendedor.add(vendedores);
                 
             }
-            return vendedores;
+            return vendedor;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
-        
     }
 
     @Override
     public int contar() throws Exception {
-        List<Vendedor> numeroUsuario=listarTodo();
-        int NumeroVendedores = 0;
+       List<Vendedor> numeroVendedores=listarTodo();
+        int NumeroVendedores =0;
         try {
-            NumeroVendedores = numeroUsuario.size();
-            if(NumeroVendedores ==0){
-              throw new Exception("No tiene elementos.");   
+            NumeroVendedores = numeroVendedores.size();
+            if (NumeroVendedores  ==0) {
+                throw new UnsupportedOperationException("No tiene elementos.");
+                
             }
             return NumeroVendedores;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return 0;
-    }
+        } 
     
+
+    
+
+    
+ 
 }

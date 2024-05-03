@@ -14,25 +14,25 @@ import java.util.List;
 public class SistemaGestion {
 private int id;
 private Date fechasMantenimientos;
-private String garantiasVehiculo;
+private Date garantiasVehiculo;
 private String notificacionClinetes;
 private Cliente cliente;
-private MantenimientoPreventivo mantenimientopreventivo;
-private MantenimientoCorrectivo mantenimientocorrectivo;
+private MantenimientoPreventivo mantenimientoPreventivo;
+private MantenimientoCorrectivo mantenimientoCorrectivo;
 
 
 public SistemaGestion (){
     
 }
 
-    public SistemaGestion(int id ,Date fechasMantenimientos, String garantiasVehiculo, String notificacionClinetes, Cliente cliente, MantenimientoPreventivo mantenimientopreventivo, MantenimientoCorrectivo mantenimientocorrectivo) {
+    public SistemaGestion(int id ,Date fechasMantenimientos, Date garantiasVehiculo, String notificacionClinetes, Cliente cliente, MantenimientoPreventivo mantenimientopreventivo, MantenimientoCorrectivo mantenimientocorrectivo) {
         this.id = id;
         this.fechasMantenimientos = fechasMantenimientos;
         this.garantiasVehiculo = garantiasVehiculo;
         this.notificacionClinetes = notificacionClinetes;
         this.cliente = cliente;
-        this.mantenimientopreventivo = mantenimientopreventivo;
-        this.mantenimientocorrectivo = mantenimientocorrectivo;
+        this.mantenimientoPreventivo = mantenimientopreventivo;
+        this.mantenimientoCorrectivo = mantenimientocorrectivo;
     }
 
     public int getId() {
@@ -48,7 +48,7 @@ public SistemaGestion (){
         return fechasMantenimientos;
     }
 
-    public String getGarantiasVehiculo() {
+    public Date getGarantiasVehiculo() {
         return garantiasVehiculo;
     }
 
@@ -61,18 +61,18 @@ public SistemaGestion (){
     }
 
     public MantenimientoPreventivo getMantenimientopreventivo() {
-        return mantenimientopreventivo;
+        return mantenimientoPreventivo;
     }
 
     public MantenimientoCorrectivo getMantenimientocorrectivo() {
-        return mantenimientocorrectivo;
+        return mantenimientoCorrectivo;
     }
 
     public void setFechasMantenimientos(Date fechasMantenimientos) {
         this.fechasMantenimientos = fechasMantenimientos;
     }
 
-    public void setGarantiasVehiculo(String garantiasVehiculo) {
+    public void setGarantiasVehiculo(Date garantiasVehiculo) {
         this.garantiasVehiculo = garantiasVehiculo;
     }
 

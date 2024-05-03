@@ -5,6 +5,7 @@
 package crud;
 
 import Dominio.CatalogoVehiculos;
+import Dominio.Cliente;
 import Dominio.Usuario;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,97 +19,98 @@ import model.ICrudModel;
  */
 public class CatalogoVehiculosCrud implements ICrudModel<CatalogoVehiculos>{
     
-    private HashMap<String, CatalogoVehiculosCrud> bdCatalogoVehiculosCrud;
+  private HashMap<Integer,CatalogoVehiculos > bdCatalogoVehiculos;  
 
     @Override
-    public void agregar(CatalogoVehiculosCrud objeto) throws Exception {
+    public void agregar(CatalogoVehiculos objeto) throws Exception {
         try {
-            if(bdCatalogoVehiculosCrud.containsKey(objeto.getId()))
-              throw new Exception("El objeto ya esta registrado");  
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }   
-
-    @Override
-    public CatalogoVehiculosCrud buscar(CatalogoVehiculosCrud objeto) throws Exception {
-        try {
-            if(!bdCatalogoVehiculosCrud.containsKey( objeto.getId())){
-                throw new Exception("El objeto no existe." );
+            if (bdCatalogoVehiculos.containsKey(objeto.getId())) {
+                throw new Exception("El vehiculo ya esta registrado.");  
             }
-            return bdCatalogoVehiculosCrud.get(objeto.getId());
+     
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return null;
        
     }
 
     @Override
-    public void editar(CatalogoVehiculosCrud objeto) throws Exception {
+    public CatalogoVehiculos buscar(CatalogoVehiculos objeto) throws Exception {
         try {
-            if(!bdCatalogoVehiculosCrud.containsKey(objeto.getId())){
-                throw new Exception("El objeto no esta registrado."); 
+            if (!bdCatalogoVehiculos.containsKey(objeto.getId())) {
+                throw new Exception("El vehiculo no existe.");
+                   
             }
-            bdCatalogoVehiculosCrud.put(objeto.getId(),objeto);
-        } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        
-    
-
-    @Override
-    public void eliminar(CatalogoVehiculosCrud objeto) throws Exception {
-        try {
-            if(!bdCatalogoVehiculosCrud.containsKey(objeto.getId())){
-                throw new Exception("el objeto no existe");
-            }
-            bdCatalogoVehiculosCrud.remove(objeto.getId());
-            
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-         
-    }
-
-    @Override
-    public List<CatalogoVehiculosCrud> listarTodo() throws Exception {
-        List<CatalogoVehiculosCrud> usuarios =new ArrayList<>();
-        try {
-            if(bdCatalogoVehiculosCrud.isEmpty()){
-                throw new Exception("No existe el elemento en la lista.");
-            }
-            for (Map.Entry<String, Usuario> dni : bdCatalogoVehiculosCrud.entrySet()) {
-                Object key = dni.getKey();
-                Usuario usuario= dni.getValue();
-                usuarios.add(usuario);
-                
-            }
-            return usuarios;
+            return bdCatalogoVehiculos.get(objeto.getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return null;
+    }
+
+    @Override
+    public void editar(CatalogoVehiculos objeto) throws Exception {
+        try {
+            if (!bdCatalogoVehiculos.containsKey(objeto.getId())) {
+                throw new Exception("El vehiculo no esta registrado.");
+                
+            }
+            bdCatalogoVehiculos.put(objeto.getId(),objeto); 
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+       
+    }
+
+    @Override
+    public void eliminar(CatalogoVehiculos objeto) throws Exception {
+        try {
+            if (bdCatalogoVehiculos.containsKey(objeto.getId())) {
+                throw new Exception("El objeto no existe.");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         
     }
 
     @Override
-    public int contar() throws Exception {
-        List<CatalogoVehiculosCrud> numeroUsuario=listarTodo();
-        int NumeroUsuarios = 0;
+    public List<CatalogoVehiculos> listarTodo() throws Exception {
+        List<CatalogoVehiculos> catalogoVehiculos = new ArrayList<>();
         try {
-            NumeroUsuarios = numeroUsuario.size();
-            if(NumeroUsuarios ==0){
-              throw new Exception("No tiene elementos.");   
+            if(bdCatalogoVehiculos.isEmpty()){
+                throw new UnsupportedOperationException("No existe el elemento en la lista.");
             }
-            return NumeroUsuarios;
+            for (Map.Entry<Integer, CatalogoVehiculos> entry : bdCatalogoVehiculos.entrySet()) {
+                int key = entry.getKey();
+                 CatalogoVehiculos vehiculo = entry.getValue();
+                 catalogoVehiculos.add(vehiculo);
+                
+            }
+            return catalogoVehiculos;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+        }
+        
+
+    @Override
+    public int contar() throws Exception {
+        List<CatalogoVehiculos> numeroVehiculos=listarTodo();
+        int NumeroVehiculos =0;
+        try {
+            NumeroVehiculos = numeroVehiculos.size();
+            if (NumeroVehiculos  ==0) {
+                throw new UnsupportedOperationException("No tiene elemntos.");
+                
+            }
+            return NumeroVehiculos;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return 0;
+        }
+        
+    
     }
-
-    
-    
-}

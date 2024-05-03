@@ -33,7 +33,7 @@ public class ClienteCrud implements ICrudModel<Cliente>{
     public Cliente buscar(Cliente objeto) throws Exception {
         try {
             if(!bdCliente.containsKey( objeto.getDni())){
-                throw new Exception("El objeto no existe." );
+                throw new Exception("El cliente no existe." );
             }
             return bdCliente.get(objeto.getDni());
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class ClienteCrud implements ICrudModel<Cliente>{
     public void editar(Cliente objeto) throws Exception {
         try {
             if(!bdCliente.containsKey(objeto.getDni())){
-                throw new Exception("El objeto no esta registrado."); 
+                throw new Exception("El cliente no esta registrado."); 
             }
             bdCliente.put(objeto.getDni(),objeto);
         } catch (Exception e) {
@@ -76,7 +76,7 @@ public class ClienteCrud implements ICrudModel<Cliente>{
         List<Cliente> clientes =new ArrayList<>();
         try {
             if(bdCliente.isEmpty()){
-                throw new Exception("No existe el elemto en la lista.");
+                throw new Exception("No existe el elemento en la lista.");
             }
             for (Map.Entry<String, Cliente> dni : bdCliente.entrySet()) {
                 //Object key = dni.getKey();

@@ -34,7 +34,7 @@ public class UsuarioCrud implements ICrudModel<Usuario>{
     public Usuario buscar(Usuario objeto) throws Exception {
         try {
             if(!bdUsuario.containsKey( objeto.getDni())){
-                throw new Exception("El objeto no existe." );
+                throw new Exception("El usuario no existe." );
             }
             return bdUsuario.get(objeto.getDni());
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class UsuarioCrud implements ICrudModel<Usuario>{
     public void editar(Usuario objeto) throws Exception {
         try {
             if(!bdUsuario.containsKey(objeto.getDni())){
-                throw new Exception("El objeto no esta registrado."); 
+                throw new Exception("El usuario no esta registrado."); 
             }
             bdUsuario.put(objeto.getDni(),objeto);
         } catch (Exception e) {

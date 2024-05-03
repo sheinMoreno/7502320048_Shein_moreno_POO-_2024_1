@@ -1,3 +1,5 @@
+@startuml
+
 title Concesionario de Vehiculos
 
 class Usuario{
@@ -25,14 +27,14 @@ class Cliente{
 -Date programacionCitaCervicio;
 -Double pagosEnLinea;
 -SistemaGestion sistemaGestion;
--EntregaVehiculoUsado entregaVehiculoUsado;
+-EntregaVehiculoUsado entregavehiculousado;
 +Cliente();
 +getHistorialMantemiento()
 +getProgramarCitasCervicios()
 +getPagosEnLinea()
-+setPagosEnLinea()
 +getSistemaGestion sistemaGestion()
 +getEntregaVehiculoUsado entregavehiculousado()
++setPagosEnLinea()
 
 }
 class Empleado{
@@ -58,8 +60,6 @@ class Vendedor{
 -CatalogoVehiculos catalogoVehiculos;
 -List<CatalogoVehiculos> listaVehiculos;
 +Vendedor();
-+getId()
-+setId()
 +getNombreCliente()
 +getVenta()
 +getVehiculoVendido()
@@ -82,12 +82,10 @@ class EntregaVehiculoUsado{
 -String modelo;
 -String marca;
 -String matricula;
--Double precioTasacion;
+-Double preciotasacion;
 -Date fechaEntrga;
 -Cliente cliente;
 +EntregaVehiculoUsado();
-+getId()
-+setId()
 +getModelo()
 +getMarca()
 +getMatricula()
@@ -112,8 +110,6 @@ class CatalogoVehiculos{
 -Vendedor vendedor;
 -List<OpcionesAdicionales> opcionesadicionales;
 +CatalogoVehiculos();
-+getId()
-+setId()
 +getModelo()
 +getMarca()
 +getCilindrada()
@@ -134,8 +130,6 @@ class OpcionesAdicionales{
 -List<OpcionesAdicionales> opcionesAdicionales;
 -CatalogoVehiculos catalogoVehiulos;
 +OpcionesAdicionales();
-+getId()
-+setid()
 +getPinturaMetalizada()
 +getAireAcondicionado()
 +getOpcionesAdicionales()
@@ -159,11 +153,9 @@ class InventarioPiezas{
 -String descripcionRemplazoPieza;
 -String nombreQuienEntrega;
 -List <InventarioPiezas> inventarioPiezas;
--MantenimientoPreventivo mantenimientoPreventivo;
--MantenimientoCorrectivo mantenimientoCorrectivo;
+-MantenimientoPreventivo mantenimientopreventivo;
+-MantenimientoCorrectivo mantenimientocorrectivo;
 +inventarioPiezas();
-+getId(9
-+setId()
 +getNombre()
 +setNombre()
 +getModelo()
@@ -187,8 +179,8 @@ class InventarioPiezas{
 +getNombreQuienEntrega()
 +setNombreQuienEntrega()
 +getInventarioPiezas()
-+getMantenimientoPreventivo mantenimientoPreventivo()
-+getMantenimientoCorrectivo mantenimientoCorrectivo()
++getMantenimientoPreventivo mantenimientopreventivo()
++getMantenimientoCorrectivo mantenimientocorrectivo()
 
 }
 
@@ -198,17 +190,15 @@ class SistemaGestion{
 -String garantiasVehiculo;
 -String notificacionClinetes;
 -Cliente cliente;
--MantenimientoPreventivo mantenimientoPreventivo;
--MantenimientoCorrectivo mantenimientoCorrectivo;
+-MantenimientoPreventivo mantenimientopreventivo;
+-MantenimientoCorrectivo mantenimientocorrectivo;
 +SistemaGestion();
-+getId()
-+setId()
 +getFechasMantenimientos()
 +getGarantiasVehiculo()
 +getNotificacionClinetes()
 +getCliente cliente
-+getMantenimientoPreventivo mantenimientoPreventivo()
-+getMantenimientoCorrectivo mantenimientoCorrectivo()
++getMantenimientoPreventivo mantenimientopreventivo()
++getMantenimientoCorrectivo mantenimientocorrectivo()
 +setFechasMantenimientos()
 +setGarantiasVehiculo()
 +setNotificacionClinetes()
@@ -222,11 +212,9 @@ class MantenimientoPreventivo{
 -String quienRealizoMantenimiento;
 -String nombrePieza;
 -Double precioMantenimiento;
--SistemaGestion sistemaGestion;
+-SistemaGestion sistemagestion;
 -List <InventarioPiezas> inventarioPiezas;
 +MantenimientoPreventivo();
-+getId()
-+setID()
 +getMantenimientoProgramado
 +getDrescripcionMatenimiento()
 +getQuienRealizoMatenimiento()
@@ -252,8 +240,6 @@ class MantenimientoCorrectivo{
 -SistemaGestion sistemagestion;
 -List <InventarioPiezas> inventarioPiezas;
 +MantenimientoCorrectivo();
-+getId()
-+setId()
 +getDrescripcionMatenimiento()
 +getQuienRealizoMantemineto()
 +getNombrePieza()
@@ -272,11 +258,13 @@ class MantenimientoCorrectivo{
 Usuario<|--Cliente :Hereda
 Usuario<|--Empleado :Hereda
 SistemaGestion"1"--"*"MantenimientoCorrectivo : tiene
-CatalogoVehiculos"1"--"1..*"OpcionesAdicionales : tiene
-Cliente"1"--"1"EntregaVehiculoUsado : puede entregar
+CatalogoVehiculos"1"--"1..*"OpcionesAdicionales : Tiene
+Cliente"1"--"1"EntregaVehiculoUsado : Puede entregar
 MantenimientoPreventivo"1"--*"*"InventarioPiezas :Puede utilizar
-Empleado"1"--"1..*"Vendedor : es un
-Cliente"1"--"1" SistemaGestion :tiene
+Empleado"1"--"1..*"Vendedor : Es un
+Cliente"1"--"1" SistemaGestion :Tiene
 SistemaGestion"1"--"*"MantenimientoPreventivo: tiene
 MantenimientoCorrectivo"1"--*"*"InventarioPiezas :Puede utilizar
-Vendedor"1"--"1"CatalogoVehiculos:tiene
+Vendedor"1"--"1"CatalogoVehiculos:Tiene
+
+

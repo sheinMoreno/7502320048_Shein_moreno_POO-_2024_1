@@ -24,8 +24,8 @@ private int numeroSalidapiezas;
 private String descripcionRemplazoPieza;
 private String nombreQuienEntrega;
 private List<InventarioPiezas> inventariopiezas;
-private MantenimientoPreventivo mantenimientopreventivo;
-private MantenimientoCorrectivo mantenimientocorrectivo;
+private MantenimientoPreventivo mantenimientoPreventivo;
+private MantenimientoCorrectivo mantenimientoCorrectivo;
 
 
 public InventarioPiezas (){
@@ -46,8 +46,8 @@ public InventarioPiezas (){
         this.descripcionRemplazoPieza = descripcionRemplazoPieza;
         this.nombreQuienEntrega = nombreQuienEntrega;
         this.inventariopiezas.add(inventariopiezas);
-        this.mantenimientopreventivo = mantenimientopreventivo;
-        this.mantenimientocorrectivo = mantenimientocorrectivo;
+        this.mantenimientoPreventivo = mantenimientopreventivo;
+        this.mantenimientoCorrectivo = mantenimientocorrectivo;
     }
 
     public int getId() {
@@ -108,11 +108,11 @@ public InventarioPiezas (){
     }
 
     public MantenimientoPreventivo getMantenimientopreventivo() {
-        return mantenimientopreventivo;
+        return mantenimientoPreventivo;
     }
 
     public MantenimientoCorrectivo getMantenimientocorrectivo() {
-        return mantenimientocorrectivo;
+        return mantenimientoCorrectivo;
     }
 
     public void setNombre(String nombre) {

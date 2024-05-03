@@ -15,19 +15,19 @@ private String historialMantemiento;
 private Date programacionCitaCervicio;
 private Double pagosEnLinea;
 private SistemaGestion sistemaGestion;
-private EntregaVehiculoUsado entregavehiculousado;
+private EntregaVehiculoUsado entregaVehiculoUsado;
 
 public Cliente () {
     
     
 }
 
-public Cliente (String historialMantemiento,Date programacionCitaCervicio,Double pagosEnLinea,SistemaGestion sistemaGestion,EntregaVehiculoUsado entregavehiculousado ){
+public Cliente (String historialMantemiento,Date programacionCitaCervicio,Double pagosEnLinea,SistemaGestion sistemaGestion,EntregaVehiculoUsado entregaVehiculoUsado ){
   this.historialMantemiento = historialMantemiento;
   this.programacionCitaCervicio = programacionCitaCervicio;
   this.pagosEnLinea = pagosEnLinea;
   this.sistemaGestion = sistemaGestion;
-  this.entregavehiculousado = entregavehiculousado;   
+  this.entregaVehiculoUsado = entregaVehiculoUsado;   
 
 }
 public String getHistorialMantemiento(){
@@ -53,7 +53,7 @@ public SistemaGestion getSistemagestion() {
     }
 
     public EntregaVehiculoUsado getEntregavehiculousado() {
-        return entregavehiculousado;
+        return entregaVehiculoUsado;
     }
 
     @Override

@@ -82,7 +82,7 @@ public List<OpcionesAdicionales> getOpcionesAdicionales(){
 
     @Override
     public String toString() {
-        return "CatalogoVehiculos{" + "id="+id+"\n modelo=" + modelo + ",\n marca=" + marca + ",\n cilindrada=" + cilindrada + ", \n precio=" + precio + '}';
+        return "CatalogoVehiculos{" + "id="+id+",\n modelo=" + modelo + ",\n marca=" + marca + ",\n cilindrada=" + cilindrada + ", \n precio=" + precio + '}';
     }
 
 

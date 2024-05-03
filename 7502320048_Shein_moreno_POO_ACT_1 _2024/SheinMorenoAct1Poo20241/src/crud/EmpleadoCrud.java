@@ -34,7 +34,7 @@ public class EmpleadoCrud implements ICrudModel<Empleado> {
     public Empleado buscar(Empleado objeto) throws Exception {
         try {
             if(!bdEmpleado.containsKey( objeto.getDni())){
-                throw new Exception("El objeto no existe." );
+                throw new Exception("El Empleado no existe." );
             }
             return bdEmpleado.get(objeto.getDni());
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class EmpleadoCrud implements ICrudModel<Empleado> {
     public void editar(Empleado objeto) throws Exception {
         try {
             if(!bdEmpleado.containsKey(objeto.getDni())){
-                throw new Exception("El objeto no esta registrado."); 
+                throw new Exception("El Empleado no esta registrado."); 
             }
             bdEmpleado.put(objeto.getDni(),objeto);
         } catch (Exception e) {
