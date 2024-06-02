@@ -22,13 +22,13 @@ class Usuario{
 }
 class Cliente{
 -String historialMantemiento;
--Date programacionCitaCervicio;
+-Date programacionCitaServicio;
 -Double pagosEnLinea;
 -SistemaGestion sistemaGestion;
 -EntregaVehiculoUsado entregaVehiculoUsado;
 +Cliente();
 +getHistorialMantemiento()
-+getProgramarCitasCervicios()
++getProgramarCitasServicio()
 +getPagosEnLinea()
 +setPagosEnLinea()
 +getSistemaGestion sistemaGestion()

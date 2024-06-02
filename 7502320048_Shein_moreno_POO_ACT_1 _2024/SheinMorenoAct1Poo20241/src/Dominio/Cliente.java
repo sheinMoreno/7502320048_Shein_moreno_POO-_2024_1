@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Cliente extends Usuario  {
 private String historialMantemiento;
-private Date programacionCitaCervicio;
+private Date programacionCitaServicio;
 private Double pagosEnLinea;
 private SistemaGestion sistemaGestion;
 private EntregaVehiculoUsado entregaVehiculoUsado;
@@ -22,9 +22,9 @@ public Cliente () {
     
 }
 
-public Cliente (String historialMantemiento,Date programacionCitaCervicio,Double pagosEnLinea,SistemaGestion sistemaGestion,EntregaVehiculoUsado entregaVehiculoUsado ){
+public Cliente (String historialMantemiento,Date programacionCitaServicio,Double pagosEnLinea,SistemaGestion sistemaGestion,EntregaVehiculoUsado entregaVehiculoUsado ){
   this.historialMantemiento = historialMantemiento;
-  this.programacionCitaCervicio = programacionCitaCervicio;
+  this.programacionCitaServicio = programacionCitaServicio;
   this.pagosEnLinea = pagosEnLinea;
   this.sistemaGestion = sistemaGestion;
   this.entregaVehiculoUsado = entregaVehiculoUsado;   
@@ -36,7 +36,7 @@ public String getHistorialMantemiento(){
 
 
 public Date getProgramacionCitaCervicio(){
-    return programacionCitaCervicio;
+    return programacionCitaServicio;
 }
 
 
@@ -58,7 +58,7 @@ public SistemaGestion getSistemagestion() {
 
     @Override
     public String toString() {
-        return "Cliente{" + "historialMantemiento=" + historialMantemiento + ",\n programarCitasCervicios=" + programacionCitaCervicio + ",\n pagosLinea=" + pagosEnLinea + '}';
+        return "Cliente{" + "historialMantemiento=" + historialMantemiento + ",\n programarCitasCervicios=" + programacionCitaServicio + ",\n pagosLinea=" + pagosEnLinea + '}';
     }
 
 
