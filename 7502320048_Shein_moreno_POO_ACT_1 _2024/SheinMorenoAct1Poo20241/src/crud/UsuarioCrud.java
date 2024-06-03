@@ -23,7 +23,7 @@ public class UsuarioCrud implements ICrudModel<Usuario>{
     @Override
     public void agregar(Usuario objeto) throws Exception {
         try {
-            if(bdUsuario.containsKey(objeto.getDni()))
+            if(bdUsuario.containsKey(objeto.getId()))
               throw new Exception("El usuario ya esta registrado");  
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -33,10 +33,10 @@ public class UsuarioCrud implements ICrudModel<Usuario>{
     @Override
     public Usuario buscar(Usuario objeto) throws Exception {
         try {
-            if(!bdUsuario.containsKey( objeto.getDni())){
+            if(!bdUsuario.containsKey( objeto.getId())){
                 throw new Exception("El usuario no existe." );
             }
-            return bdUsuario.get(objeto.getDni());
+            return bdUsuario.get(objeto.getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -47,10 +47,10 @@ public class UsuarioCrud implements ICrudModel<Usuario>{
     @Override
     public void editar(Usuario objeto) throws Exception {
         try {
-            if(!bdUsuario.containsKey(objeto.getDni())){
+            if(!bdUsuario.containsKey(objeto.getId())){
                 throw new Exception("El usuario no esta registrado."); 
             }
-            bdUsuario.put(objeto.getDni(),objeto);
+            bdUsuario.put((String) objeto.getId(),objeto);
         } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -61,7 +61,7 @@ public class UsuarioCrud implements ICrudModel<Usuario>{
     @Override
     public void eliminar(Usuario objeto) throws Exception {
         try {
-            if(!bdUsuario.containsKey(objeto.getDni())){
+            if(!bdUsuario.containsKey(objeto.getId())){
                 throw new Exception("el objeto no existe");
             }
             bdUsuario.remove(objeto.getDni());
@@ -79,9 +79,9 @@ public class UsuarioCrud implements ICrudModel<Usuario>{
             if(bdUsuario.isEmpty()){
                 throw new Exception("No existe el elemento en la lista.");
             }
-            for (Map.Entry<String, Usuario> dni : bdUsuario.entrySet()) {
-                Object key = dni.getKey();
-                Usuario usuario= dni.getValue();
+            for (Map.Entry<String, Usuario> id : bdUsuario.entrySet()) {
+                Object key = id.getKey();
+                Usuario usuario= id.getValue();
                 usuarios.add(usuario);
                 
             }

@@ -4,6 +4,25 @@
  */
 package Interfaces;
 
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.SwingUtilities;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ASUS
@@ -29,7 +48,7 @@ public class vendedorNuevoCliente extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         nuevoCliente = new javax.swing.JLabel();
-        dni1 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
         correo = new javax.swing.JLabel();
         apellido1 = new javax.swing.JLabel();
@@ -37,12 +56,13 @@ public class vendedorNuevoCliente extends javax.swing.JPanel {
         direccion = new javax.swing.JLabel();
         contraseña = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        DNI = new javax.swing.JTextField();
-        apellidos = new javax.swing.JTextField();
-        nombres1 = new javax.swing.JTextField();
-        correoElectronico = new javax.swing.JTextField();
-        cedula1 = new javax.swing.JTextField();
-        apellidos1 = new javax.swing.JTextField();
+        text_id = new javax.swing.JTextField();
+        text_apellido = new javax.swing.JTextField();
+        text_nombre = new javax.swing.JTextField();
+        text_contraseña = new javax.swing.JTextField();
+        text_celular = new javax.swing.JTextField();
+        text_direccion = new javax.swing.JTextField();
+        text_correoElectronico = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -69,10 +89,10 @@ public class vendedorNuevoCliente extends javax.swing.JPanel {
         nuevoCliente.setText("Nuevo Cliente");
         jPanel2.add(nuevoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 6, 219, -1));
 
-        dni1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        dni1.setForeground(new java.awt.Color(59, 75, 82));
-        dni1.setText("DNI:");
-        jPanel2.add(dni1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 43, -1, -1));
+        id.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        id.setForeground(new java.awt.Color(59, 75, 82));
+        id.setText("Id:");
+        jPanel2.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 43, -1, -1));
 
         nombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         nombre.setForeground(new java.awt.Color(59, 75, 82));
@@ -115,43 +135,46 @@ public class vendedorNuevoCliente extends javax.swing.JPanel {
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 405, 354, 45));
 
-        DNI.setBorder(null);
-        jPanel2.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 69, 258, -1));
+        text_id.setBorder(null);
+        jPanel2.add(text_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 69, 258, -1));
 
-        apellidos.setBorder(null);
-        apellidos.addActionListener(new java.awt.event.ActionListener() {
+        text_apellido.setBorder(null);
+        text_apellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidosActionPerformed(evt);
+                text_apellidoActionPerformed(evt);
             }
         });
-        jPanel2.add(apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 235, 260, -1));
+        jPanel2.add(text_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 235, 260, -1));
 
-        nombres1.setBorder(null);
-        nombres1.addActionListener(new java.awt.event.ActionListener() {
+        text_nombre.setBorder(null);
+        text_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombres1ActionPerformed(evt);
+                text_nombreActionPerformed(evt);
             }
         });
-        jPanel2.add(nombres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 147, 258, -1));
+        jPanel2.add(text_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 147, 258, -1));
 
-        correoElectronico.setBorder(null);
-        jPanel2.add(correoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 147, 279, -1));
+        text_contraseña.setBorder(null);
+        jPanel2.add(text_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 279, -1));
 
-        cedula1.setBorder(null);
-        cedula1.addActionListener(new java.awt.event.ActionListener() {
+        text_celular.setBorder(null);
+        text_celular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cedula1ActionPerformed(evt);
+                text_celularActionPerformed(evt);
             }
         });
-        jPanel2.add(cedula1, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 69, 279, -1));
+        jPanel2.add(text_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 69, 279, -1));
 
-        apellidos1.setBorder(null);
-        apellidos1.addActionListener(new java.awt.event.ActionListener() {
+        text_direccion.setBorder(null);
+        text_direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidos1ActionPerformed(evt);
+                text_direccionActionPerformed(evt);
             }
         });
-        jPanel2.add(apellidos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 333, 621, -1));
+        jPanel2.add(text_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 333, 621, -1));
+
+        text_correoElectronico.setBorder(null);
+        jPanel2.add(text_correoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(366, 147, 279, -1));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 92, 258, 10));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 169, 258, 10));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 280, 10));
@@ -181,39 +204,69 @@ public class vendedorNuevoCliente extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombres1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombres1ActionPerformed
+    private void text_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombres1ActionPerformed
+    }//GEN-LAST:event_text_nombreActionPerformed
 
-    private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
+    private void text_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_apellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apellidosActionPerformed
+    }//GEN-LAST:event_text_apellidoActionPerformed
 
-    private void apellidos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidos1ActionPerformed
+    private void text_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_direccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apellidos1ActionPerformed
+    }//GEN-LAST:event_text_direccionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            // Especifica las columnas en las que deseas insertar datos
+            String sql = "INSERT INTO cliente (Nombre, Apellido, ID, Celular, Correo, Direccion, Rol, Contraseña) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatementRegistrarUsuario = connection.prepareStatement(sql);
+
+            // Asigna los valores a los parámetros
+            preparedStatementRegistrarUsuario.setString(1, text_nombre.getText().trim());
+            preparedStatementRegistrarUsuario.setString(2, text_apellido.getText().trim());
+            preparedStatementRegistrarUsuario.setString(3, text_id.getText().trim());
+            preparedStatementRegistrarUsuario.setString(4, text_celular.getText().trim());
+            preparedStatementRegistrarUsuario.setString(5, text_correoElectronico.getText().trim());
+            preparedStatementRegistrarUsuario.setString(6, text_direccion.getText().trim());
+            preparedStatementRegistrarUsuario.setString(7, "cliente"); // Asegúrate que "cliente" es el valor correcto
+            preparedStatementRegistrarUsuario.setString(8, text_contraseña.getText().trim());
+
+            // Ejecuta la actualización
+            preparedStatementRegistrarUsuario.executeUpdate();
+
+            // Limpia los campos después de la inserción
+            text_nombre.setText("");
+            text_apellido.setText("");
+            text_id.setText("");
+            text_celular.setText("");
+            text_correoElectronico.setText("");
+            text_direccion.setText("");
+            text_contraseña.setText("");
+
+            // Muestra un mensaje de éxito
+            JOptionPane.showMessageDialog(null, "Registro Exitoso");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al agregar nuevo cliente", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void cedula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedula1ActionPerformed
+    private void text_celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_celularActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cedula1ActionPerformed
+    }//GEN-LAST:event_text_celularActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DNI;
     private javax.swing.JLabel apellido1;
-    private javax.swing.JTextField apellidos;
-    private javax.swing.JTextField apellidos1;
-    private javax.swing.JTextField cedula1;
     private javax.swing.JLabel celular1;
     private javax.swing.JLabel contraseña;
     private javax.swing.JLabel correo;
-    private javax.swing.JTextField correoElectronico;
     private javax.swing.JLabel direccion;
-    private javax.swing.JLabel dni1;
+    private javax.swing.JLabel id;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -226,7 +279,13 @@ public class vendedorNuevoCliente extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel nombre;
-    private javax.swing.JTextField nombres1;
     private javax.swing.JLabel nuevoCliente;
+    private javax.swing.JTextField text_apellido;
+    private javax.swing.JTextField text_celular;
+    private javax.swing.JTextField text_contraseña;
+    private javax.swing.JTextField text_correoElectronico;
+    private javax.swing.JTextField text_direccion;
+    private javax.swing.JTextField text_id;
+    private javax.swing.JTextField text_nombre;
     // End of variables declaration//GEN-END:variables
 }

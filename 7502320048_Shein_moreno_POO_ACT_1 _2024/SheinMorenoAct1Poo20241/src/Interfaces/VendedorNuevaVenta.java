@@ -5,6 +5,11 @@
 package Interfaces;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,8 +21,7 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
      * Creates new form VentanaNuevaVenta
      */
     public VendedorNuevaVenta() {
-       
-        
+
         initComponents();
     }
 
@@ -33,60 +37,48 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         datosDelCliente = new javax.swing.JLabel();
-        dni1 = new javax.swing.JLabel();
-        DNI = new javax.swing.JTextField();
+        Id = new javax.swing.JLabel();
+        text_id = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         Nombre = new javax.swing.JLabel();
-        nombres = new javax.swing.JTextField();
+        text_nombre = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         Correo = new javax.swing.JLabel();
-        correoElectronico = new javax.swing.JTextField();
+        text_correoElectronico = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         Apellido = new javax.swing.JLabel();
-        apellido = new javax.swing.JTextField();
+        text_apellido = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         Celular = new javax.swing.JLabel();
-        celular = new javax.swing.JTextField();
+        text_celular = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         Direccion = new javax.swing.JLabel();
-        direccion = new javax.swing.JTextField();
+        text_direccion = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        contraseña = new javax.swing.JLabel();
-        contraseñaText = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
         nuevaVenta1 = new javax.swing.JLabel();
         crearVenta = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JSeparator();
         ID = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
+        text_idVehiculo = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
         Modelo = new javax.swing.JLabel();
-        modelo = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         Marca = new javax.swing.JLabel();
-        marca = new javax.swing.JTextField();
         jSeparator11 = new javax.swing.JSeparator();
         CIlindrada = new javax.swing.JLabel();
-        cilindrada = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
-        Color = new javax.swing.JLabel();
-        color = new javax.swing.JTextField();
-        jSeparator13 = new javax.swing.JSeparator();
-        valor = new javax.swing.JTextField();
+        text_valor = new javax.swing.JTextField();
         Valor = new javax.swing.JLabel();
         jSeparator14 = new javax.swing.JSeparator();
         jSeparator15 = new javax.swing.JSeparator();
         datosDelVehiculo1 = new javax.swing.JLabel();
-        Color1 = new javax.swing.JLabel();
-        color1 = new javax.swing.JTextField();
-        jSeparator16 = new javax.swing.JSeparator();
         Color2 = new javax.swing.JLabel();
         obcionesAdicionales1 = new javax.swing.JLabel();
         FechaEntregaVehiculoUsado = new javax.swing.JLabel();
         aireAcondicionadoNo = new javax.swing.JCheckBox();
         aireAcondicionadoSi2 = new javax.swing.JCheckBox();
         jSeparator17 = new javax.swing.JSeparator();
-        obcionesAdicionales3 = new javax.swing.JLabel();
+        tipoDePintura = new javax.swing.JLabel();
         obcionesAdicionales4 = new javax.swing.JLabel();
         IdVehiculoUsado = new javax.swing.JLabel();
         id1 = new javax.swing.JTextField();
@@ -100,9 +92,6 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         CIlindradaVehiculoUsado = new javax.swing.JLabel();
         cilindradaVehiculoUsado = new javax.swing.JTextField();
         jSeparator21 = new javax.swing.JSeparator();
-        ColorVehicculoUsado = new javax.swing.JLabel();
-        colorVehiculoUsado = new javax.swing.JTextField();
-        jSeparator22 = new javax.swing.JSeparator();
         PrecioTasacion = new javax.swing.JLabel();
         precioTasacion = new javax.swing.JTextField();
         jSeparator23 = new javax.swing.JSeparator();
@@ -118,6 +107,19 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         Garantia = new javax.swing.JLabel();
         garantia = new javax.swing.JTextField();
         jSeparator28 = new javax.swing.JSeparator();
+        buscar = new javax.swing.JLabel();
+        text_buscar = new javax.swing.JTextField();
+        jSeparator29 = new javax.swing.JSeparator();
+        button_buscar = new javax.swing.JButton();
+        buscar1 = new javax.swing.JLabel();
+        jSeparator30 = new javax.swing.JSeparator();
+        button_buscar2 = new javax.swing.JButton();
+        text_buscar1 = new javax.swing.JTextField();
+        comboBox_modelo1 = new javax.swing.JComboBox<>();
+        comboBox_modelo2 = new javax.swing.JComboBox<>();
+        comboBox_modelo3 = new javax.swing.JComboBox<>();
+        pinturaMetalizadaSi = new javax.swing.JCheckBox();
+        pinturaMetalizadaNo = new javax.swing.JCheckBox();
         fondo = new javax.swing.JLabel();
 
         jScrollPane1.setBorder(null);
@@ -132,27 +134,27 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         datosDelCliente.setText("Datos del Cliente");
         jPanel1.add(datosDelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 219, -1));
 
-        dni1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        dni1.setForeground(new java.awt.Color(59, 75, 82));
-        dni1.setText("DNI:");
-        jPanel1.add(dni1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        Id.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Id.setForeground(new java.awt.Color(59, 75, 82));
+        Id.setText("Id:");
+        jPanel1.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        DNI.setBorder(null);
-        jPanel1.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 258, -1));
+        text_id.setBorder(null);
+        jPanel1.add(text_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 258, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 258, 10));
 
         Nombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Nombre.setForeground(new java.awt.Color(59, 75, 82));
         Nombre.setText("Nombres:");
-        jPanel1.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jPanel1.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 80, -1));
 
-        nombres.setBorder(null);
-        nombres.addActionListener(new java.awt.event.ActionListener() {
+        text_nombre.setBorder(null);
+        text_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombresActionPerformed(evt);
+                text_nombreActionPerformed(evt);
             }
         });
-        jPanel1.add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 258, -1));
+        jPanel1.add(text_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 258, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 258, 10));
 
         Correo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -160,8 +162,8 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         Correo.setText("Correo:");
         jPanel1.add(Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 68, -1));
 
-        correoElectronico.setBorder(null);
-        jPanel1.add(correoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 279, -1));
+        text_correoElectronico.setBorder(null);
+        jPanel1.add(text_correoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 279, -1));
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 279, 10));
 
         Apellido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -169,13 +171,13 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         Apellido.setText("Apellidos:");
         jPanel1.add(Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 80, -1));
 
-        apellido.setBorder(null);
-        apellido.addActionListener(new java.awt.event.ActionListener() {
+        text_apellido.setBorder(null);
+        text_apellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidoActionPerformed(evt);
+                text_apellidoActionPerformed(evt);
             }
         });
-        jPanel1.add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 260, -1));
+        jPanel1.add(text_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 260, -1));
         jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 260, 10));
 
         Celular.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -183,13 +185,13 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         Celular.setText("Celular:");
         jPanel1.add(Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 63, -1));
 
-        celular.setBorder(null);
-        celular.addActionListener(new java.awt.event.ActionListener() {
+        text_celular.setBorder(null);
+        text_celular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                celularActionPerformed(evt);
+                text_celularActionPerformed(evt);
             }
         });
-        jPanel1.add(celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 279, -1));
+        jPanel1.add(text_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 279, -1));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 279, 11));
 
         Direccion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -197,28 +199,14 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         Direccion.setText("Direccion:");
         jPanel1.add(Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 97, -1));
 
-        direccion.setBorder(null);
-        direccion.addActionListener(new java.awt.event.ActionListener() {
+        text_direccion.setBorder(null);
+        text_direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                direccionActionPerformed(evt);
+                text_direccionActionPerformed(evt);
             }
         });
-        jPanel1.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 621, -1));
+        jPanel1.add(text_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 621, -1));
         jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 621, 10));
-
-        contraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        contraseña.setForeground(new java.awt.Color(59, 75, 82));
-        contraseña.setText("Contraseña:");
-        jPanel1.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 110, -1));
-
-        contraseñaText.setBorder(null);
-        contraseñaText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contraseñaTextActionPerformed(evt);
-            }
-        });
-        jPanel1.add(contraseñaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 280, -1));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 280, 10));
 
         nuevaVenta1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nuevaVenta1.setForeground(new java.awt.Color(59, 75, 82));
@@ -242,56 +230,38 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         ID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ID.setForeground(new java.awt.Color(59, 75, 82));
         ID.setText("Id:");
-        jPanel1.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, -1, -1));
+        jPanel1.add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, -1, -1));
 
-        id.setBorder(null);
-        jPanel1.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, 258, -1));
-        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 258, 10));
+        text_idVehiculo.setBorder(null);
+        jPanel1.add(text_idVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 258, -1));
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, 258, 10));
 
         Modelo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Modelo.setForeground(new java.awt.Color(59, 75, 82));
         Modelo.setText("Modelo:");
-        jPanel1.add(Modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 570, -1, -1));
-
-        modelo.setBorder(null);
-        jPanel1.add(modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 600, 310, -1));
-        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 620, 310, 10));
+        jPanel1.add(Modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 580, 90, -1));
+        jPanel1.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 640, 310, 10));
 
         Marca.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Marca.setForeground(new java.awt.Color(59, 75, 82));
         Marca.setText("Marca:");
-        jPanel1.add(Marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, -1, -1));
-
-        marca.setBorder(null);
-        jPanel1.add(marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 690, 258, -1));
-        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 710, 258, 10));
+        jPanel1.add(Marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 670, 70, -1));
+        jPanel1.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 730, 258, 10));
 
         CIlindrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         CIlindrada.setForeground(new java.awt.Color(59, 75, 82));
         CIlindrada.setText("Cilindrada:");
-        jPanel1.add(CIlindrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 660, -1, -1));
+        jPanel1.add(CIlindrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 670, 110, -1));
+        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 730, 310, 10));
 
-        cilindrada.setBorder(null);
-        jPanel1.add(cilindrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 690, 310, -1));
-        jPanel1.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 710, 310, 10));
-
-        Color.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Color.setForeground(new java.awt.Color(59, 75, 82));
-        Color.setText("Color:");
-        jPanel1.add(Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 750, -1, -1));
-
-        color.setBorder(null);
-        jPanel1.add(color, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 780, 258, -1));
-        jPanel1.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 800, 258, 10));
-
-        valor.setBorder(null);
-        jPanel1.add(valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 780, 258, -1));
+        text_valor.setBorder(null);
+        jPanel1.add(text_valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 800, 258, -1));
 
         Valor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Valor.setForeground(new java.awt.Color(59, 75, 82));
         Valor.setText("Valor:");
-        jPanel1.add(Valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 750, -1, -1));
-        jPanel1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 800, 258, 10));
+        jPanel1.add(Valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 750, 70, -1));
+        jPanel1.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 820, 258, 10));
 
         jSeparator15.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jPanel1.add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 483, 750, 10));
@@ -301,19 +271,10 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         datosDelVehiculo1.setText("Datos del Vehiculo");
         jPanel1.add(datosDelVehiculo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 219, -1));
 
-        Color1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Color1.setForeground(new java.awt.Color(59, 75, 82));
-        Color1.setText("Color Pintura:");
-        jPanel1.add(Color1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 980, -1, -1));
-
-        color1.setBorder(null);
-        jPanel1.add(color1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 1010, 258, -1));
-        jPanel1.add(jSeparator16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 1030, 258, 10));
-
         Color2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Color2.setForeground(new java.awt.Color(59, 75, 82));
         Color2.setText("Aire Acondicionado:");
-        jPanel1.add(Color2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 940, -1, -1));
+        jPanel1.add(Color2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 940, -1, -1));
 
         obcionesAdicionales1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         obcionesAdicionales1.setForeground(new java.awt.Color(59, 75, 82));
@@ -327,19 +288,19 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
 
         aireAcondicionadoNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         aireAcondicionadoNo.setText("NO");
-        jPanel1.add(aireAcondicionadoNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 990, -1, -1));
+        jPanel1.add(aireAcondicionadoNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 980, -1, -1));
 
         aireAcondicionadoSi2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         aireAcondicionadoSi2.setText("SI");
-        jPanel1.add(aireAcondicionadoSi2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 990, -1, -1));
+        jPanel1.add(aireAcondicionadoSi2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 980, -1, -1));
 
         jSeparator17.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jPanel1.add(jSeparator17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 850, 750, 10));
 
-        obcionesAdicionales3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        obcionesAdicionales3.setForeground(new java.awt.Color(59, 75, 82));
-        obcionesAdicionales3.setText("Pintura Metalizada:");
-        jPanel1.add(obcionesAdicionales3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 940, 130, -1));
+        tipoDePintura.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tipoDePintura.setForeground(new java.awt.Color(59, 75, 82));
+        tipoDePintura.setText("Pintura Metalizada:");
+        jPanel1.add(tipoDePintura, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 940, 130, -1));
 
         obcionesAdicionales4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         obcionesAdicionales4.setForeground(new java.awt.Color(59, 75, 82));
@@ -358,52 +319,43 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         ModeloVehiculoUsado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ModeloVehiculoUsado.setForeground(new java.awt.Color(59, 75, 82));
         ModeloVehiculoUsado.setText("Modelo:");
-        jPanel1.add(ModeloVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1180, -1, -1));
+        jPanel1.add(ModeloVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1270, 100, -1));
 
         modeloVehiculoUsado.setBorder(null);
-        jPanel1.add(modeloVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1210, 310, -1));
-        jPanel1.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1230, 310, 10));
+        jPanel1.add(modeloVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1300, 310, -1));
+        jPanel1.add(jSeparator19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1320, 310, 10));
 
         MarcaVehiculoUsado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         MarcaVehiculoUsado.setForeground(new java.awt.Color(59, 75, 82));
         MarcaVehiculoUsado.setText("Marca:");
-        jPanel1.add(MarcaVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1270, -1, -1));
+        jPanel1.add(MarcaVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1180, 80, -1));
 
         marcaVehiculoUsado.setBorder(null);
-        jPanel1.add(marcaVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1300, 258, -1));
-        jPanel1.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1320, 258, 10));
+        jPanel1.add(marcaVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1210, 258, -1));
+        jPanel1.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1230, 258, 10));
 
         CIlindradaVehiculoUsado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         CIlindradaVehiculoUsado.setForeground(new java.awt.Color(59, 75, 82));
         CIlindradaVehiculoUsado.setText("Cilindrada:");
-        jPanel1.add(CIlindradaVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1270, -1, -1));
+        jPanel1.add(CIlindradaVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1270, 100, -1));
 
         cilindradaVehiculoUsado.setBorder(null);
         jPanel1.add(cilindradaVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1300, 310, -1));
         jPanel1.add(jSeparator21, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1320, 310, 10));
 
-        ColorVehicculoUsado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        ColorVehicculoUsado.setForeground(new java.awt.Color(59, 75, 82));
-        ColorVehicculoUsado.setText("Color:");
-        jPanel1.add(ColorVehicculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1360, -1, -1));
-
-        colorVehiculoUsado.setBorder(null);
-        jPanel1.add(colorVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1390, 258, -1));
-        jPanel1.add(jSeparator22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 258, 10));
-
         PrecioTasacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         PrecioTasacion.setForeground(new java.awt.Color(59, 75, 82));
         PrecioTasacion.setText("Precio de Tasacion:");
-        jPanel1.add(PrecioTasacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1360, -1, -1));
+        jPanel1.add(PrecioTasacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1340, 160, -1));
 
         precioTasacion.setBorder(null);
-        jPanel1.add(precioTasacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1390, 258, -1));
-        jPanel1.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1410, 258, 10));
+        jPanel1.add(precioTasacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1370, 258, -1));
+        jPanel1.add(jSeparator23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1390, 258, 10));
 
         Matricula.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Matricula.setForeground(new java.awt.Color(59, 75, 82));
         Matricula.setText("Matricula:");
-        jPanel1.add(Matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 1180, -1, -1));
+        jPanel1.add(Matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 1180, 100, -1));
 
         matricula.setBorder(null);
         jPanel1.add(matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 1210, 310, -1));
@@ -434,6 +386,76 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         jPanel1.add(garantia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1610, 258, -1));
         jPanel1.add(jSeparator28, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1630, 258, 10));
 
+        buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buscar.setForeground(new java.awt.Color(59, 75, 82));
+        buscar.setText("Buscar:");
+        jPanel1.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 70, -1));
+
+        text_buscar.setBorder(null);
+        text_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_buscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(text_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 210, -1));
+        jPanel1.add(jSeparator29, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 220, 10));
+
+        button_buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\GitHub\\7502320048_Shein_moreno_POO-_2024_1\\7502320048_Shein_moreno_POO_ACT_1 _2024\\SheinMorenoAct1Poo20241\\src\\Interfaces\\iconos\\lupa.png")); // NOI18N
+        button_buscar.setBorder(null);
+        button_buscar.setBorderPainted(false);
+        button_buscar.setContentAreaFilled(false);
+        button_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_buscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(button_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
+
+        buscar1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buscar1.setForeground(new java.awt.Color(59, 75, 82));
+        buscar1.setText("Buscar:");
+        jPanel1.add(buscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 70, -1));
+        jPanel1.add(jSeparator30, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 540, 220, 10));
+
+        button_buscar2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\GitHub\\7502320048_Shein_moreno_POO-_2024_1\\7502320048_Shein_moreno_POO_ACT_1 _2024\\SheinMorenoAct1Poo20241\\src\\Interfaces\\iconos\\lupa.png")); // NOI18N
+        button_buscar2.setBorder(null);
+        button_buscar2.setBorderPainted(false);
+        button_buscar2.setContentAreaFilled(false);
+        button_buscar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_buscar2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(button_buscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 510, -1, -1));
+
+        text_buscar1.setBorder(null);
+        text_buscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_buscar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(text_buscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 210, -1));
+
+        comboBox_modelo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "CAMARO SIX SS", "ONIX TURBO RS MT", "LOGAN LIFE", "SANDERO LIFE+" }));
+        comboBox_modelo1.setBorder(null);
+        jPanel1.add(comboBox_modelo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, 310, -1));
+
+        comboBox_modelo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "CHEVROLET", "RENAULT", " NISSAN", " MAZDA", " KIA", "TOYOTA", " VOLKSWAGEN", " SUZUKI", " FORD", " MERCEDES BENZ " }));
+        comboBox_modelo2.setBorder(null);
+        jPanel1.add(comboBox_modelo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 700, 250, -1));
+
+        comboBox_modelo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "CAMARO SIX SS (6.2L V8 SFI)", "ONIX TURBO(1.0T)", "LOGAN LIFE (Cilindraje (cm3) 1598)", "SANDERO LIFE + (Cilindraje (cm3) 1598)", " " }));
+        comboBox_modelo3.setBorder(null);
+        jPanel1.add(comboBox_modelo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 700, 310, -1));
+
+        pinturaMetalizadaSi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pinturaMetalizadaSi.setText("SI");
+        jPanel1.add(pinturaMetalizadaSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 980, -1, -1));
+
+        pinturaMetalizadaNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        pinturaMetalizadaNo.setText("NO");
+        jPanel1.add(pinturaMetalizadaNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 980, -1, -1));
+
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\UNIVERSIDAD\\interfaz\\ventaDeVehiculos750,2000.png")); // NOI18N
         fondo.setOpaque(true);
@@ -457,43 +479,85 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_crearVentaActionPerformed
 
-    private void contraseñaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaTextActionPerformed
+    private void text_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_contraseñaTextActionPerformed
+    }//GEN-LAST:event_text_nombreActionPerformed
 
-    private void nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombresActionPerformed
+    private void text_celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_celularActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombresActionPerformed
+    }//GEN-LAST:event_text_celularActionPerformed
 
-    private void celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celularActionPerformed
+    private void text_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_direccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_celularActionPerformed
+    }//GEN-LAST:event_text_direccionActionPerformed
 
-    private void direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionActionPerformed
+    private void text_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_apellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_direccionActionPerformed
+    }//GEN-LAST:event_text_apellidoActionPerformed
 
-    private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
+    private void text_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_buscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apellidoActionPerformed
+    }//GEN-LAST:event_text_buscarActionPerformed
 
+    private void button_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buscarActionPerformed
 
+        botonBuscar();
+
+    }//GEN-LAST:event_button_buscarActionPerformed
+
+    private void button_buscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buscar2ActionPerformed
+        
+        
+    }//GEN-LAST:event_button_buscar2ActionPerformed
+
+    private void text_buscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_buscar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_buscar1ActionPerformed
+    private boolean botonBuscar() {
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from cliente where ID = ?");
+            preparedStatement.setString(1, text_buscar.getText().trim());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                text_id.setText(resultSet.getString("ID"));
+                text_nombre.setText(resultSet.getString("Nombre"));
+                text_apellido.setText(resultSet.getString("Apellido"));
+                text_celular.setText(resultSet.getString("Celular"));
+                text_correoElectronico.setText(resultSet.getString("Correo"));
+                text_direccion.setText(resultSet.getString("Direccion"));
+                
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente no registrado");
+
+            }
+
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+
+    
+
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellido;
     private javax.swing.JLabel CIlindrada;
     private javax.swing.JLabel CIlindradaVehiculoUsado;
     private javax.swing.JLabel Celular;
-    private javax.swing.JLabel Color;
-    private javax.swing.JLabel Color1;
     private javax.swing.JLabel Color2;
-    private javax.swing.JLabel ColorVehicculoUsado;
     private javax.swing.JLabel Correo;
-    private javax.swing.JTextField DNI;
     private javax.swing.JLabel Direccion;
     private javax.swing.JLabel FechaEntregaVehiculoUsado;
     private javax.swing.JLabel FechaVenta;
     private javax.swing.JLabel Garantia;
     private javax.swing.JLabel ID;
+    private javax.swing.JLabel Id;
     private javax.swing.JLabel IdVehiculoUsado;
     private javax.swing.JLabel Marca;
     private javax.swing.JLabel MarcaVehiculoUsado;
@@ -505,26 +569,21 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
     private javax.swing.JLabel Valor;
     private javax.swing.JCheckBox aireAcondicionadoNo;
     private javax.swing.JCheckBox aireAcondicionadoSi2;
-    private javax.swing.JTextField apellido;
-    private javax.swing.JTextField celular;
-    private javax.swing.JTextField cilindrada;
+    private javax.swing.JLabel buscar;
+    private javax.swing.JLabel buscar1;
+    private javax.swing.JButton button_buscar;
+    private javax.swing.JButton button_buscar2;
     private javax.swing.JTextField cilindradaVehiculoUsado;
-    private javax.swing.JTextField color;
-    private javax.swing.JTextField color1;
-    private javax.swing.JTextField colorVehiculoUsado;
-    private javax.swing.JLabel contraseña;
-    private javax.swing.JTextField contraseñaText;
-    private javax.swing.JTextField correoElectronico;
+    private javax.swing.JComboBox<String> comboBox_modelo1;
+    private javax.swing.JComboBox<String> comboBox_modelo2;
+    private javax.swing.JComboBox<String> comboBox_modelo3;
     private javax.swing.JButton crearVenta;
     private javax.swing.JLabel datosDelCliente;
     private javax.swing.JLabel datosDelVehiculo1;
-    private javax.swing.JTextField direccion;
-    private javax.swing.JLabel dni1;
     private javax.swing.JTextField fechaEntrega;
     private javax.swing.JTextField fechaEntrega1;
     private javax.swing.JLabel fondo;
     private javax.swing.JTextField garantia;
-    private javax.swing.JTextField id;
     private javax.swing.JTextField id1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -532,41 +591,47 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
-    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
-    private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
-    private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator23;
     private javax.swing.JSeparator jSeparator24;
     private javax.swing.JSeparator jSeparator25;
     private javax.swing.JSeparator jSeparator26;
     private javax.swing.JSeparator jSeparator27;
     private javax.swing.JSeparator jSeparator28;
-    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator29;
+    private javax.swing.JSeparator jSeparator30;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField marca;
     private javax.swing.JTextField marcaVehiculoUsado;
     private javax.swing.JTextField matricula;
-    private javax.swing.JTextField modelo;
     private javax.swing.JTextField modeloVehiculoUsado;
-    private javax.swing.JTextField nombres;
     private javax.swing.JLabel nuevaVenta1;
     private javax.swing.JLabel obcionesAdicionales1;
-    private javax.swing.JLabel obcionesAdicionales3;
     private javax.swing.JLabel obcionesAdicionales4;
+    private javax.swing.JCheckBox pinturaMetalizadaNo;
+    private javax.swing.JCheckBox pinturaMetalizadaSi;
     private javax.swing.JTextField precioTasacion;
-    private javax.swing.JTextField valor;
+    private javax.swing.JTextField text_apellido;
+    private javax.swing.JTextField text_buscar;
+    private javax.swing.JTextField text_buscar1;
+    private javax.swing.JTextField text_celular;
+    private javax.swing.JTextField text_correoElectronico;
+    private javax.swing.JTextField text_direccion;
+    private javax.swing.JTextField text_id;
+    private javax.swing.JTextField text_idVehiculo;
+    private javax.swing.JTextField text_nombre;
+    private javax.swing.JTextField text_valor;
+    private javax.swing.JLabel tipoDePintura;
     // End of variables declaration//GEN-END:variables
 }

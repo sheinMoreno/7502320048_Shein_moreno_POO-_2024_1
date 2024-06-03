@@ -73,7 +73,7 @@ public class ventanaCliente extends javax.swing.JFrame {
 
         buttonPagosEnLinea.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         buttonPagosEnLinea.setForeground(new java.awt.Color(255, 255, 255));
-        buttonPagosEnLinea.setText("Pago en Liena");
+        buttonPagosEnLinea.setText("Pago en Linea");
         buttonPagosEnLinea.setBorder(null);
         buttonPagosEnLinea.setContentAreaFilled(false);
         buttonPagosEnLinea.addActionListener(new java.awt.event.ActionListener() {
@@ -95,14 +95,14 @@ public class ventanaCliente extends javax.swing.JFrame {
         itemBarraVertical.setLayout(itemBarraVerticalLayout);
         itemBarraVerticalLayout.setHorizontalGroup(
             itemBarraVerticalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 740, Short.MAX_VALUE)
         );
         itemBarraVerticalLayout.setVerticalGroup(
             itemBarraVerticalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(itemBarraVertical, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+        jPanel1.add(itemBarraVertical, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 740, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,7 +112,9 @@ public class ventanaCliente extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -121,7 +123,7 @@ public class ventanaCliente extends javax.swing.JFrame {
 
     private void buttonHistorialMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHistorialMantenimientoActionPerformed
 
-        ItemHistorialMantenimiento historialMantenimiento = new ItemHistorialMantenimiento();
+        ItemPagoEnLinea historialMantenimiento = new ItemPagoEnLinea();
         historialMantenimiento.setSize(750, 600);
         historialMantenimiento.setLocation(0, 0);
 
@@ -145,7 +147,15 @@ public class ventanaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonProgramacionActionPerformed
 
     private void buttonPagosEnLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagosEnLineaActionPerformed
-        // TODO add your handling code here:
+        
+        ItemPagoEnLinea pagoEnLinea = new ItemPagoEnLinea();
+        pagoEnLinea.setSize(750, 600);
+        pagoEnLinea.setLocation(0, 0);
+
+        itemBarraVertical.removeAll();
+        itemBarraVertical.add(pagoEnLinea,BorderLayout.CENTER);
+        itemBarraVertical.revalidate();
+        itemBarraVertical.repaint();
     }//GEN-LAST:event_buttonPagosEnLineaActionPerformed
 
     /**

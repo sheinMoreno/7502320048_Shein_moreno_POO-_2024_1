@@ -31,7 +31,6 @@ public class ItemVenta extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         buttonNuevaVenta = new javax.swing.JButton();
         buttonEditarVenta = new javax.swing.JButton();
-        buttonEliminarVenta = new javax.swing.JButton();
         buttonListaVenta = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -70,19 +69,12 @@ public class ItemVenta extends javax.swing.JPanel {
         });
         jPanel2.add(buttonEditarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, 50));
 
-        buttonEliminarVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        buttonEliminarVenta.setForeground(new java.awt.Color(255, 255, 255));
-        buttonEliminarVenta.setText("Eliminar Venta");
-        buttonEliminarVenta.setBorder(null);
-        buttonEliminarVenta.setContentAreaFilled(false);
-        jPanel2.add(buttonEliminarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, 50));
-
         buttonListaVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         buttonListaVenta.setForeground(new java.awt.Color(255, 255, 255));
         buttonListaVenta.setText("Lista Venta");
         buttonListaVenta.setBorder(null);
         buttonListaVenta.setContentAreaFilled(false);
-        jPanel2.add(buttonListaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, -1, 50));
+        jPanel2.add(buttonListaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, -1, 50));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 20, 30));
@@ -143,7 +135,6 @@ public class ItemVenta extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEditarVenta;
-    private javax.swing.JButton buttonEliminarVenta;
     private javax.swing.JButton buttonListaVenta;
     private javax.swing.JButton buttonNuevaVenta;
     private javax.swing.JPanel content;

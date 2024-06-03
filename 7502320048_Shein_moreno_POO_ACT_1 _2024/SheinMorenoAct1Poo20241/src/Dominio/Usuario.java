@@ -10,7 +10,7 @@ package Dominio;
  */
 public class Usuario {
     
- private String dni; 
+ private String id; 
  private String nombre;
  private String telefono;
  private String direccion;
@@ -20,8 +20,8 @@ public class Usuario {
     
  }
 
-    public Usuario(String dni, String nombre, String telefono, String direccion, String correo) {
-        this.dni = dni;
+    public Usuario(String id, String nombre, String telefono, String direccion, String correo) {
+        this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
@@ -29,7 +29,7 @@ public class Usuario {
     }
 
     public String getDni() {
-        return dni;
+        return id;
     }
 
     public String getNombre() {
@@ -49,7 +49,7 @@ public class Usuario {
     }
 
     public void setDni(String dni) {
-        this.dni = dni;
+        this.id = id;
     }
 
     public void setNombre(String nombre) {
@@ -70,7 +70,11 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "dni=" + dni + ",\n nombre=" + nombre + ",\n telefono=" + telefono + ",\n direccion=" + direccion + ",\n correo=" + correo + '}';
+        return "Usuario{" + "dni=" + id + ",\n nombre=" + nombre + ",\n telefono=" + telefono + ",\n direccion=" + direccion + ",\n correo=" + correo + '}';
+    }
+
+    public Object getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
  
  

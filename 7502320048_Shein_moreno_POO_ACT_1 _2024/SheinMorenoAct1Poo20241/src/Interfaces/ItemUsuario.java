@@ -41,17 +41,16 @@ public class ItemUsuario extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        buttonUsuarioLista = new javax.swing.JButton();
-        buttonUsuarioNuevo = new javax.swing.JButton();
-        buttonUsuarioEditar1 = new javax.swing.JButton();
-        buttonUsuarioEliminar1 = new javax.swing.JButton();
+        buttonClienteLista = new javax.swing.JButton();
+        buttonClienteNuevo = new javax.swing.JButton();
+        buttonClienteEditar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
-        setMinimumSize(new java.awt.Dimension(750, 634));
+        setMinimumSize(new java.awt.Dimension(753, 634));
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(670, 70));
         setRequestFocusEnabled(false);
@@ -60,43 +59,41 @@ public class ItemUsuario extends javax.swing.JPanel {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        buttonUsuarioLista.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        buttonUsuarioLista.setForeground(new java.awt.Color(255, 255, 255));
-        buttonUsuarioLista.setText("Lista Usuario");
-        buttonUsuarioLista.setBorder(null);
-        buttonUsuarioLista.setContentAreaFilled(false);
-        jPanel1.add(buttonUsuarioLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, -1, 50));
-
-        buttonUsuarioNuevo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        buttonUsuarioNuevo.setForeground(new java.awt.Color(255, 255, 255));
-        buttonUsuarioNuevo.setText("Nuevo Usuario");
-        buttonUsuarioNuevo.setBorder(null);
-        buttonUsuarioNuevo.setContentAreaFilled(false);
-        buttonUsuarioNuevo.addActionListener(new java.awt.event.ActionListener() {
+        buttonClienteLista.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buttonClienteLista.setForeground(new java.awt.Color(255, 255, 255));
+        buttonClienteLista.setText("Lista ");
+        buttonClienteLista.setBorder(null);
+        buttonClienteLista.setContentAreaFilled(false);
+        buttonClienteLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonUsuarioNuevoActionPerformed(evt);
+                buttonClienteListaActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonUsuarioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5, -1, 40));
+        jPanel1.add(buttonClienteLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, 50));
 
-        buttonUsuarioEditar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        buttonUsuarioEditar1.setForeground(new java.awt.Color(255, 255, 255));
-        buttonUsuarioEditar1.setText("Editar Usuario");
-        buttonUsuarioEditar1.setBorder(null);
-        buttonUsuarioEditar1.setContentAreaFilled(false);
-        buttonUsuarioEditar1.addActionListener(new java.awt.event.ActionListener() {
+        buttonClienteNuevo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buttonClienteNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        buttonClienteNuevo.setText("Nuevo ");
+        buttonClienteNuevo.setBorder(null);
+        buttonClienteNuevo.setContentAreaFilled(false);
+        buttonClienteNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonUsuarioEditar1ActionPerformed(evt);
+                buttonClienteNuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonUsuarioEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, 50));
+        jPanel1.add(buttonClienteNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, 50));
 
-        buttonUsuarioEliminar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        buttonUsuarioEliminar1.setForeground(new java.awt.Color(255, 255, 255));
-        buttonUsuarioEliminar1.setText("Eliminar Usuario");
-        buttonUsuarioEliminar1.setBorder(null);
-        buttonUsuarioEliminar1.setContentAreaFilled(false);
-        jPanel1.add(buttonUsuarioEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, 50));
+        buttonClienteEditar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buttonClienteEditar.setForeground(new java.awt.Color(255, 255, 255));
+        buttonClienteEditar.setText("Editar ");
+        buttonClienteEditar.setBorder(null);
+        buttonClienteEditar.setContentAreaFilled(false);
+        buttonClienteEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonClienteEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonClienteEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, -1, 50));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 10, 30));
@@ -122,43 +119,54 @@ public class ItemUsuario extends javax.swing.JPanel {
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addGap(0, 520, Short.MAX_VALUE)
         );
 
-        add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 750, 596));
+        add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 750, 520));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonUsuarioNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUsuarioNuevoActionPerformed
+    private void buttonClienteNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClienteNuevoActionPerformed
         
-        vendedorNuevoCliente usuarioNuevo =new vendedorNuevoCliente();
-        usuarioNuevo.setSize(750,525);
-        usuarioNuevo.setLocation(0, 0);
+        vendedorNuevoCliente clienteNuevo =new vendedorNuevoCliente();
+        clienteNuevo.setSize(750,525);
+        clienteNuevo.setLocation(0, 0);
         
         content.removeAll();
-        content.add(usuarioNuevo,BorderLayout.CENTER);
+        content.add(clienteNuevo,BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
         
-    }//GEN-LAST:event_buttonUsuarioNuevoActionPerformed
+    }//GEN-LAST:event_buttonClienteNuevoActionPerformed
 
-    private void buttonUsuarioEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUsuarioEditar1ActionPerformed
+    private void buttonClienteEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClienteEditarActionPerformed
         
-        VendedorEditarCliente usuarioEditar = new VendedorEditarCliente(); 
-        usuarioEditar.setSize(750,525);
-        usuarioEditar.setLocation(0, 0);
+        VendedorEditarCliente clienteEditar = new VendedorEditarCliente(); 
+        clienteEditar.setSize(750,525);
+        clienteEditar.setLocation(0, 0);
         
         content.removeAll();
-        content.add(usuarioEditar,BorderLayout.CENTER);
+        content.add(clienteEditar,BorderLayout.CENTER);
         content.revalidate();
         content.repaint(); 
-    }//GEN-LAST:event_buttonUsuarioEditar1ActionPerformed
+    }//GEN-LAST:event_buttonClienteEditarActionPerformed
+
+    private void buttonClienteListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClienteListaActionPerformed
+        
+        VendedorListaCliente clienteLista = new VendedorListaCliente(); 
+        clienteLista.setSize(750,525);
+        clienteLista.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(clienteLista,BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_buttonClienteListaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonUsuarioEditar1;
-    private javax.swing.JButton buttonUsuarioEliminar1;
-    private javax.swing.JButton buttonUsuarioLista;
-    private javax.swing.JButton buttonUsuarioNuevo;
+    private javax.swing.JButton buttonClienteEditar;
+    private javax.swing.JButton buttonClienteLista;
+    private javax.swing.JButton buttonClienteNuevo;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
