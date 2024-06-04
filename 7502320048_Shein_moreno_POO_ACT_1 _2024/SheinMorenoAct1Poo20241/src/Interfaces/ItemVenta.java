@@ -85,8 +85,8 @@ public class ItemVenta extends javax.swing.JPanel {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 20, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/itemhorizontal2.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\UNIVERSIDAD\\interfaz\\itemhorizontal2.png")); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 50));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 752, -1));
 

@@ -3,8 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package Interfaces;
+
+import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,13 +25,20 @@ public class VendedorListaCliente extends javax.swing.JPanel {
      */
     public VendedorListaCliente() {
         initComponents();
-        
-        this.setBackground(new Color(30, 30, 30));
 
-        DefaultTableModel mode = (DefaultTableModel) tableCliente1.getModel();
-        for (int i = 1; i <= 20; i++) {
-            mode.addRow(new Object[]{i, "Ra Ven", 10, "001 001 001", "PP"});
-        }
+        table_cliente.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        table_cliente.getTableHeader().setOpaque(false);
+        table_cliente.getTableHeader().setBackground(new Color(32, 136, 203));
+        table_cliente.getTableHeader().setForeground(new Color(255, 255, 255));
+        table_cliente.setRowHeight(25);
+
+        // Deshabilitar reordenación de columnas
+        table_cliente.getTableHeader().setReorderingAllowed(false);
+
+        // Deshabilitar edición de celdas
+        table_cliente.setDefaultEditor(Object.class, null);
+
+        cargarDatos();
     }
 
     /**
@@ -37,33 +51,18 @@ public class VendedorListaCliente extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableCliente1 = new Interfaces.TableCliente();
         buscar = new javax.swing.JLabel();
         text_buscar = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         button_buscar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        button_eliminar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_cliente = new javax.swing.JTable();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tableCliente1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tableCliente1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 730, 440));
 
         buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buscar.setForeground(new java.awt.Color(59, 75, 82));
@@ -90,10 +89,36 @@ public class VendedorListaCliente extends javax.swing.JPanel {
         });
         jPanel1.add(button_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, -1, -1));
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\GitHub\\7502320048_Shein_moreno_POO-_2024_1\\7502320048_Shein_moreno_POO_ACT_1 _2024\\SheinMorenoAct1Poo20241\\src\\Interfaces\\iconos\\papelera.png")); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        button_eliminar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\GitHub\\7502320048_Shein_moreno_POO-_2024_1\\7502320048_Shein_moreno_POO_ACT_1 _2024\\SheinMorenoAct1Poo20241\\src\\Interfaces\\iconos\\papelera.png")); // NOI18N
+        button_eliminar.setBorder(null);
+        button_eliminar.setBorderPainted(false);
+        button_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_eliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(button_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 20, 20, -1));
+
+        table_cliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombres", "Apellidos", "Celular", "Correo", "Direccion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        table_cliente.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane1.setViewportView(table_cliente);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 720, 430));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 550));
     }// </editor-fold>//GEN-END:initComponents
@@ -104,32 +129,123 @@ public class VendedorListaCliente extends javax.swing.JPanel {
 
     private void button_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buscarActionPerformed
 
-        
+        String ID = text_buscar.getText().trim();
+        buscarCliente(ID);
 
     }//GEN-LAST:event_button_buscarActionPerformed
 
+    private void button_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_eliminarActionPerformed
+        
+        int filaSeleccionada = table_cliente.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            String ID = (String) table_cliente.getValueAt(filaSeleccionada, 0);
+            eliminarCliente(ID);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un cliente de la tabla", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_button_eliminarActionPerformed
 
-    
-    public static void main(String[] args) {
-       java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                javax.swing.JFrame frame = new javax.swing.JFrame();
-                frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-                frame.add(new VendedorListaCliente());
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
+    private void cargarDatos() {
+        try {
+            Connection conexion = ConexionBD.conectar();
+            PreparedStatement pst = conexion.prepareStatement("SELECT * FROM cliente");
+            ResultSet rs = pst.executeQuery();
+
+            DefaultTableModel modelo = (DefaultTableModel) table_cliente.getModel();
+            modelo.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
+
+            while (rs.next()) {
+                Object[] fila = {
+                    rs.getString("ID"),
+                    rs.getString("Nombre"),
+                    rs.getString("Apellido"),
+                    rs.getString("Celular"),
+                    rs.getString("Correo"),
+                    rs.getString("Direccion")
+
+                };
+                modelo.addRow(fila);
             }
-        }); 
+
+            conexion.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
+
+    private void buscarCliente(String ID) {
+        try {
+            Connection conexion = ConexionBD.conectar();
+            PreparedStatement pst = conexion.prepareStatement("SELECT * FROM cliente WHERE ID = ?");
+            pst.setString(1, ID);
+            ResultSet rs = pst.executeQuery();
+
+            DefaultTableModel modelo = (DefaultTableModel) table_cliente.getModel();
+            modelo.setRowCount(0); // Limpiar la tabla antes de agregar nuevos datos
+
+            if (rs.next()) {
+                Object[] fila = {
+                    rs.getString("ID"),
+                    rs.getString("Nombre"),
+                    rs.getString("Apellido"),
+                    rs.getString("Celular"),
+                    rs.getString("Correo"),
+                    rs.getString("Direccion")
+                };
+                modelo.addRow(fila);
+            } else {
+                JOptionPane.showMessageDialog(this, "Clinete no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            conexion.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void eliminarCliente(String ID) {
+        try {
+            Connection conexion = ConexionBD.conectar();
+            PreparedStatement pst = conexion.prepareStatement("DELETE FROM cliente WHERE ID = ?");
+            pst.setString(1, ID);
+            int filasAfectadas = pst.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                cargarDatos(); // Actualizar la tabla después de la eliminación
+                JOptionPane.showMessageDialog(this, "Cliente eliminado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró ningún Cliente con esa identificacion", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            conexion.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public class ConexionBD {
+
+        private static final String URL = "jdbc:mysql://localhost/plataforma";
+        private static final String USER = "root";
+        private static final String PASSWORD = "";
+
+        public static Connection conectar() throws SQLException {
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        }
+    }
+
+    public static void main(String[] args) {
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel buscar;
     private javax.swing.JButton button_buscar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton button_eliminar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator4;
-    private Interfaces.TableCliente tableCliente1;
+    private javax.swing.JTable table_cliente;
     private javax.swing.JTextField text_buscar;
     // End of variables declaration//GEN-END:variables
 }
