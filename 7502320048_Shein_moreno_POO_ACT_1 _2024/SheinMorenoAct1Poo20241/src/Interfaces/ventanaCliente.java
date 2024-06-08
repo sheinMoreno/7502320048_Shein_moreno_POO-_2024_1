@@ -95,14 +95,14 @@ public class ventanaCliente extends javax.swing.JFrame {
         itemBarraVertical.setLayout(itemBarraVerticalLayout);
         itemBarraVerticalLayout.setHorizontalGroup(
             itemBarraVerticalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addGap(0, 760, Short.MAX_VALUE)
         );
         itemBarraVerticalLayout.setVerticalGroup(
             itemBarraVerticalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(itemBarraVertical, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 740, 580));
+        jPanel1.add(itemBarraVertical, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 760, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,27 +123,12 @@ public class ventanaCliente extends javax.swing.JFrame {
 
     private void buttonHistorialMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHistorialMantenimientoActionPerformed
 
-        ItemPagoEnLinea historialMantenimiento = new ItemPagoEnLinea();
-        historialMantenimiento.setSize(750, 600);
-        historialMantenimiento.setLocation(0, 0);
-
-        itemBarraVertical.removeAll();
-        itemBarraVertical.add(historialMantenimiento,BorderLayout.CENTER);
-        itemBarraVertical.revalidate();
-        itemBarraVertical.repaint();
-
+       
     }//GEN-LAST:event_buttonHistorialMantenimientoActionPerformed
 
     private void buttonProgramacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProgramacionActionPerformed
 
-        ItemVenta venta = new ItemVenta();
-        venta.setSize(750, 600);
-        venta.setLocation(0, 0);
-
-        itemBarraVertical.removeAll();
-        itemBarraVertical.add(venta,BorderLayout.CENTER);
-        itemBarraVertical.revalidate();
-        itemBarraVertical.repaint();
+        
     }//GEN-LAST:event_buttonProgramacionActionPerformed
 
     private void buttonPagosEnLineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPagosEnLineaActionPerformed

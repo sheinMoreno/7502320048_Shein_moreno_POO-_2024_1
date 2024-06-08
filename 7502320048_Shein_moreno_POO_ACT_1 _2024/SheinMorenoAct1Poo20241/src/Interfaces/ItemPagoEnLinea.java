@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author ASUS
@@ -28,10 +30,13 @@ public class ItemPagoEnLinea extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         button_lista = new javax.swing.JButton();
+        buttton_pago = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
         panel_pagoeEnLinea = new javax.swing.JPanel();
+
+        setOpaque(false);
 
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,12 +51,24 @@ public class ItemPagoEnLinea extends javax.swing.JPanel {
                 button_listaActionPerformed(evt);
             }
         });
-        jPanel1.add(button_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 50));
+        jPanel1.add(button_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 130, 50));
+
+        buttton_pago.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buttton_pago.setForeground(new java.awt.Color(255, 255, 255));
+        buttton_pago.setText("Pago");
+        buttton_pago.setBorder(null);
+        buttton_pago.setContentAreaFilled(false);
+        buttton_pago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttton_pagoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttton_pago, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 50));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 10, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\GitHub\\7502320048_Shein_moreno_POO-_2024_1\\7502320048_Shein_moreno_POO_ACT_1 _2024\\SheinMorenoAct1Poo20241\\src\\Interfaces\\itemhorizontal2.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\UNIVERSIDAD\\interfaz\\itemhorizontal2.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 55));
 
         content.setOpaque(false);
@@ -85,12 +102,32 @@ public class ItemPagoEnLinea extends javax.swing.JPanel {
 
     private void button_listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_listaActionPerformed
 
+        ListaPagoEnLinea lista_pago =new ListaPagoEnLinea();
+        lista_pago.setSize(750,525);
+        lista_pago.setLocation(0, 0);
         
+        content.removeAll();
+        content.add(lista_pago,BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_button_listaActionPerformed
+
+    private void buttton_pagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttton_pagoActionPerformed
+        
+        ventanaPagoEnLinea pago_linea =new ventanaPagoEnLinea();
+        pago_linea.setSize(750,525);
+        pago_linea.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(pago_linea,BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_buttton_pagoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_lista;
+    private javax.swing.JButton buttton_pago;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

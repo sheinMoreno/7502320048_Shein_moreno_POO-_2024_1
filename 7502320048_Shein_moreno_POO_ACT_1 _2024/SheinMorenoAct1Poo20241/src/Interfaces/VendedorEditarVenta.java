@@ -4,6 +4,12 @@
  */
 package Interfaces;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
@@ -29,26 +35,26 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         datosDelCliente = new javax.swing.JLabel();
-        dni1 = new javax.swing.JLabel();
-        DNI = new javax.swing.JTextField();
+        Id = new javax.swing.JLabel();
+        text_id = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         Nombre = new javax.swing.JLabel();
-        nombres = new javax.swing.JTextField();
+        text_nombre = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         Correo = new javax.swing.JLabel();
-        correoElectronico = new javax.swing.JTextField();
+        text_correoElectronico = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         Apellido = new javax.swing.JLabel();
-        apellido = new javax.swing.JTextField();
+        text_apellido = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         Celular = new javax.swing.JLabel();
-        celular = new javax.swing.JTextField();
+        text_celular = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         Direccion = new javax.swing.JLabel();
-        direccion = new javax.swing.JTextField();
+        text_direccion = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         contraseña = new javax.swing.JLabel();
-        contraseñaText = new javax.swing.JTextField();
+        text_contraseña = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         EdiatarVenta = new javax.swing.JLabel();
         editarVenta = new javax.swing.JButton();
@@ -84,9 +90,6 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         jSeparator17 = new javax.swing.JSeparator();
         obcionesAdicionales3 = new javax.swing.JLabel();
         obcionesAdicionales4 = new javax.swing.JLabel();
-        IdVehiculoUsado = new javax.swing.JLabel();
-        id1 = new javax.swing.JTextField();
-        jSeparator18 = new javax.swing.JSeparator();
         ModeloVehiculoUsado = new javax.swing.JLabel();
         modeloVehiculoUsado = new javax.swing.JTextField();
         jSeparator19 = new javax.swing.JSeparator();
@@ -114,6 +117,10 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         Garantia = new javax.swing.JLabel();
         garantia = new javax.swing.JTextField();
         jSeparator28 = new javax.swing.JSeparator();
+        buscar = new javax.swing.JLabel();
+        text_buscar = new javax.swing.JTextField();
+        jSeparator29 = new javax.swing.JSeparator();
+        button_buscar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -131,13 +138,13 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         datosDelCliente.setText("Datos del Cliente");
         jPanel2.add(datosDelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 219, -1));
 
-        dni1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        dni1.setForeground(new java.awt.Color(59, 75, 82));
-        dni1.setText("DNI:");
-        jPanel2.add(dni1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        Id.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Id.setForeground(new java.awt.Color(59, 75, 82));
+        Id.setText("ID:");
+        jPanel2.add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
-        DNI.setBorder(null);
-        jPanel2.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 258, -1));
+        text_id.setBorder(null);
+        jPanel2.add(text_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 258, -1));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 258, 10));
 
         Nombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -145,13 +152,13 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         Nombre.setText("Nombres:");
         jPanel2.add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
-        nombres.setBorder(null);
-        nombres.addActionListener(new java.awt.event.ActionListener() {
+        text_nombre.setBorder(null);
+        text_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombresActionPerformed(evt);
+                text_nombreActionPerformed(evt);
             }
         });
-        jPanel2.add(nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 258, -1));
+        jPanel2.add(text_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 258, -1));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 258, 10));
 
         Correo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -159,8 +166,8 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         Correo.setText("Correo:");
         jPanel2.add(Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 68, -1));
 
-        correoElectronico.setBorder(null);
-        jPanel2.add(correoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 279, -1));
+        text_correoElectronico.setBorder(null);
+        jPanel2.add(text_correoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 279, -1));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 279, 10));
 
         Apellido.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -168,13 +175,13 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         Apellido.setText("Apellidos:");
         jPanel2.add(Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 80, -1));
 
-        apellido.setBorder(null);
-        apellido.addActionListener(new java.awt.event.ActionListener() {
+        text_apellido.setBorder(null);
+        text_apellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidoActionPerformed(evt);
+                text_apellidoActionPerformed(evt);
             }
         });
-        jPanel2.add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 260, -1));
+        jPanel2.add(text_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 260, -1));
         jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 260, 10));
 
         Celular.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -182,13 +189,13 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         Celular.setText("Celular:");
         jPanel2.add(Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 63, -1));
 
-        celular.setBorder(null);
-        celular.addActionListener(new java.awt.event.ActionListener() {
+        text_celular.setBorder(null);
+        text_celular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                celularActionPerformed(evt);
+                text_celularActionPerformed(evt);
             }
         });
-        jPanel2.add(celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 279, -1));
+        jPanel2.add(text_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 279, -1));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 279, 11));
 
         Direccion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -196,13 +203,13 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         Direccion.setText("Direccion:");
         jPanel2.add(Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 97, -1));
 
-        direccion.setBorder(null);
-        direccion.addActionListener(new java.awt.event.ActionListener() {
+        text_direccion.setBorder(null);
+        text_direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                direccionActionPerformed(evt);
+                text_direccionActionPerformed(evt);
             }
         });
-        jPanel2.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 621, -1));
+        jPanel2.add(text_direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 621, -1));
         jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 621, 10));
 
         contraseña.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -210,13 +217,13 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         contraseña.setText("Contraseña:");
         jPanel2.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 110, -1));
 
-        contraseñaText.setBorder(null);
-        contraseñaText.addActionListener(new java.awt.event.ActionListener() {
+        text_contraseña.setBorder(null);
+        text_contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contraseñaTextActionPerformed(evt);
+                text_contraseñaActionPerformed(evt);
             }
         });
-        jPanel2.add(contraseñaText, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 280, -1));
+        jPanel2.add(text_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 280, -1));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 280, 10));
 
         EdiatarVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -345,15 +352,6 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         obcionesAdicionales4.setText("Obciones Adicionales");
         jPanel2.add(obcionesAdicionales4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 880, 219, -1));
 
-        IdVehiculoUsado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        IdVehiculoUsado.setForeground(new java.awt.Color(59, 75, 82));
-        IdVehiculoUsado.setText("Id:");
-        jPanel2.add(IdVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 1430, -1, -1));
-
-        id1.setBorder(null);
-        jPanel2.add(id1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 1460, 258, -1));
-        jPanel2.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 1480, 258, 10));
-
         ModeloVehiculoUsado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ModeloVehiculoUsado.setForeground(new java.awt.Color(59, 75, 82));
         ModeloVehiculoUsado.setText("Modelo:");
@@ -433,6 +431,31 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         jPanel2.add(garantia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1610, 258, -1));
         jPanel2.add(jSeparator28, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 1630, 258, 10));
 
+        buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buscar.setForeground(new java.awt.Color(59, 75, 82));
+        buscar.setText("Buscar:");
+        jPanel2.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 70, -1));
+
+        text_buscar.setBorder(null);
+        text_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_buscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(text_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 210, -1));
+        jPanel2.add(jSeparator29, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 220, 10));
+
+        button_buscar.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\GitHub\\7502320048_Shein_moreno_POO-_2024_1\\7502320048_Shein_moreno_POO_ACT_1 _2024\\SheinMorenoAct1Poo20241\\src\\Interfaces\\iconos\\lupa.png")); // NOI18N
+        button_buscar.setBorder(null);
+        button_buscar.setBorderPainted(false);
+        button_buscar.setContentAreaFilled(false);
+        button_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_buscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(button_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, -1, -1));
+
         fondo.setBackground(new java.awt.Color(255, 255, 255));
         fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Desktop\\UNIVERSIDAD\\interfaz\\ventaDeVehiculos750,2000.png")); // NOI18N
         fondo.setOpaque(true);
@@ -457,31 +480,68 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombresActionPerformed
+    private void text_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombresActionPerformed
+    }//GEN-LAST:event_text_nombreActionPerformed
 
-    private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
+    private void text_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_apellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_apellidoActionPerformed
+    }//GEN-LAST:event_text_apellidoActionPerformed
 
-    private void celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celularActionPerformed
+    private void text_celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_celularActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_celularActionPerformed
+    }//GEN-LAST:event_text_celularActionPerformed
 
-    private void direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_direccionActionPerformed
+    private void text_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_direccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_direccionActionPerformed
+    }//GEN-LAST:event_text_direccionActionPerformed
 
-    private void contraseñaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseñaTextActionPerformed
+    private void text_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_contraseñaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_contraseñaTextActionPerformed
+    }//GEN-LAST:event_text_contraseñaActionPerformed
 
     private void editarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarVentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editarVentaActionPerformed
 
+    private void text_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_buscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_buscarActionPerformed
 
+    private void button_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buscarActionPerformed
+
+        botonBuscar();
+    }//GEN-LAST:event_button_buscarActionPerformed
+
+
+    private boolean botonBuscar() {
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from cliente where ID = ?");
+            preparedStatement.setString(1, text_buscar.getText().trim());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                text_id.setText(resultSet.getString("ID"));
+                text_nombre.setText(resultSet.getString("Nombre"));
+                text_apellido.setText(resultSet.getString("Apellido"));
+                text_celular.setText(resultSet.getString("Celular"));
+                text_correoElectronico.setText(resultSet.getString("Correo"));
+                text_direccion.setText(resultSet.getString("Direccion"));
+                
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente no registrado");
+
+            }
+
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Apellido;
     private javax.swing.JLabel CIlindrada;
@@ -492,14 +552,13 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
     private javax.swing.JLabel Color2;
     private javax.swing.JLabel ColorVehicculoUsado;
     private javax.swing.JLabel Correo;
-    private javax.swing.JTextField DNI;
     private javax.swing.JLabel Direccion;
     private javax.swing.JLabel EdiatarVenta;
     private javax.swing.JLabel FechaEntregaVehiculoUsado;
     private javax.swing.JLabel FechaVenta;
     private javax.swing.JLabel Garantia;
     private javax.swing.JLabel ID;
-    private javax.swing.JLabel IdVehiculoUsado;
+    private javax.swing.JLabel Id;
     private javax.swing.JLabel Marca;
     private javax.swing.JLabel MarcaVehiculoUsado;
     private javax.swing.JLabel Matricula;
@@ -510,27 +569,22 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
     private javax.swing.JLabel Valor;
     private javax.swing.JCheckBox aireAcondicionadoNo;
     private javax.swing.JCheckBox aireAcondicionadoSi2;
-    private javax.swing.JTextField apellido;
-    private javax.swing.JTextField celular;
+    private javax.swing.JLabel buscar;
+    private javax.swing.JButton button_buscar;
     private javax.swing.JTextField cilindrada;
     private javax.swing.JTextField cilindradaVehiculoUsado;
     private javax.swing.JTextField color;
     private javax.swing.JTextField color1;
     private javax.swing.JTextField colorVehiculoUsado;
     private javax.swing.JLabel contraseña;
-    private javax.swing.JTextField contraseñaText;
-    private javax.swing.JTextField correoElectronico;
     private javax.swing.JLabel datosDelCliente;
     private javax.swing.JLabel datosDelVehiculo1;
-    private javax.swing.JTextField direccion;
-    private javax.swing.JLabel dni1;
     private javax.swing.JButton editarVenta;
     private javax.swing.JTextField fechaEntrega;
     private javax.swing.JTextField fechaEntrega1;
     private javax.swing.JLabel fondo;
     private javax.swing.JTextField garantia;
     private javax.swing.JTextField id;
-    private javax.swing.JTextField id1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
@@ -542,7 +596,6 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
     private javax.swing.JSeparator jSeparator17;
-    private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator20;
@@ -554,6 +607,7 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator26;
     private javax.swing.JSeparator jSeparator27;
     private javax.swing.JSeparator jSeparator28;
+    private javax.swing.JSeparator jSeparator29;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
@@ -566,11 +620,18 @@ public class VendedorEditarVenta extends javax.swing.JPanel {
     private javax.swing.JTextField matricula;
     private javax.swing.JTextField modelo;
     private javax.swing.JTextField modeloVehiculoUsado;
-    private javax.swing.JTextField nombres;
     private javax.swing.JLabel obcionesAdicionales1;
     private javax.swing.JLabel obcionesAdicionales3;
     private javax.swing.JLabel obcionesAdicionales4;
     private javax.swing.JTextField precioTasacion;
+    private javax.swing.JTextField text_apellido;
+    private javax.swing.JTextField text_buscar;
+    private javax.swing.JTextField text_celular;
+    private javax.swing.JTextField text_contraseña;
+    private javax.swing.JTextField text_correoElectronico;
+    private javax.swing.JTextField text_direccion;
+    private javax.swing.JTextField text_id;
+    private javax.swing.JTextField text_nombre;
     private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 }

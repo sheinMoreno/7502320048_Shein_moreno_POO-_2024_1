@@ -74,6 +74,11 @@ public class ItemVenta extends javax.swing.JPanel {
         buttonListaVenta.setText("Lista Venta");
         buttonListaVenta.setBorder(null);
         buttonListaVenta.setContentAreaFilled(false);
+        buttonListaVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonListaVentaActionPerformed(evt);
+            }
+        });
         jPanel2.add(buttonListaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, -1, 50));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -131,6 +136,19 @@ public class ItemVenta extends javax.swing.JPanel {
         content.revalidate();
         content.repaint();
     }//GEN-LAST:event_buttonEditarVentaActionPerformed
+
+    
+        
+    private void buttonListaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListaVentaActionPerformed
+        vendedorListaVenta ventaLista =new vendedorListaVenta();
+        ventaLista.setSize(750,525);
+        ventaLista.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(ventaLista,BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_buttonListaVentaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

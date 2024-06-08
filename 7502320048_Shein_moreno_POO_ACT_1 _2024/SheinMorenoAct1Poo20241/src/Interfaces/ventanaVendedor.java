@@ -143,34 +143,40 @@ public class ventanaVendedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUsuarioActionPerformed
-        
+
         ItemUsuario usuario = new ItemUsuario();
         usuario.setSize(750, 600);
         usuario.setLocation(0, 0);
-        
+
         itemBarraVertical.removeAll();
-        itemBarraVertical.add(usuario,BorderLayout.CENTER);
+        itemBarraVertical.add(usuario, BorderLayout.CENTER);
         itemBarraVertical.revalidate();
         itemBarraVertical.repaint();
-        
-        
+
+
     }//GEN-LAST:event_buttonUsuarioActionPerformed
 
     private void buttonVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVentaActionPerformed
-        
-        
+
         ItemVenta venta = new ItemVenta();
         venta.setSize(750, 600);
         venta.setLocation(0, 0);
-        
+
         itemBarraVertical.removeAll();
-        itemBarraVertical.add(venta,BorderLayout.CENTER);
+        itemBarraVertical.add(venta, BorderLayout.CENTER);
         itemBarraVertical.revalidate();
         itemBarraVertical.repaint();
     }//GEN-LAST:event_buttonVentaActionPerformed
 
     private void buttonCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCatalogoActionPerformed
-        // TODO add your handling code here:
+        VendedorCatalogo catalogo = new VendedorCatalogo();
+        catalogo.setSize(750, 600);
+        catalogo.setLocation(0, 0);
+
+        itemBarraVertical.removeAll();
+        itemBarraVertical.add(catalogo, BorderLayout.CENTER);
+        itemBarraVertical.revalidate();
+        itemBarraVertical.repaint();
     }//GEN-LAST:event_buttonCatalogoActionPerformed
 
     /**

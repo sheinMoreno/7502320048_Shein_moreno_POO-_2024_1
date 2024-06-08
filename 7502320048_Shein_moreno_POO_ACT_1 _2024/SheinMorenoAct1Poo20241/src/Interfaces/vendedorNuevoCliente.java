@@ -246,7 +246,7 @@ public class vendedorNuevoCliente extends javax.swing.JPanel {
             text_direccion.setText("");
             text_contraseña.setText("");
 
-            // Muestra un mensaje de éxito
+            // Muestra un mensaje de registro exitoso
             JOptionPane.showMessageDialog(null, "Registro Exitoso");
 
         } catch (SQLException e) {

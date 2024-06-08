@@ -194,7 +194,7 @@ public class VendedorListaCliente extends javax.swing.JPanel {
                 };
                 modelo.addRow(fila);
             } else {
-                JOptionPane.showMessageDialog(this, "Clinete no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Cliente no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
             conexion.close();
@@ -205,6 +205,7 @@ public class VendedorListaCliente extends javax.swing.JPanel {
 
     private void eliminarCliente(String ID) {
         try {
+            //BD bade de datos
             Connection conexion = ConexionBD.conectar();
             PreparedStatement pst = conexion.prepareStatement("DELETE FROM cliente WHERE ID = ?");
             pst.setString(1, ID);
@@ -224,6 +225,7 @@ public class VendedorListaCliente extends javax.swing.JPanel {
     }
 
     public class ConexionBD {
+        //BD bade de datos
 
         private static final String URL = "jdbc:mysql://localhost/plataforma";
         private static final String USER = "root";

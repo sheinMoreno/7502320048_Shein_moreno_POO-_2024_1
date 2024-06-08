@@ -342,6 +342,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
 
+        
         return "invalido"; // Usuario o contraseña no coinciden en ninguna tabla
     }
 

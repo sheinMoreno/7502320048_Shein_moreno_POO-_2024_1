@@ -80,9 +80,6 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         jSeparator17 = new javax.swing.JSeparator();
         tipoDePintura = new javax.swing.JLabel();
         obcionesAdicionales4 = new javax.swing.JLabel();
-        IdVehiculoUsado = new javax.swing.JLabel();
-        id1 = new javax.swing.JTextField();
-        jSeparator18 = new javax.swing.JSeparator();
         ModeloVehiculoUsado = new javax.swing.JLabel();
         modeloVehiculoUsado = new javax.swing.JTextField();
         jSeparator19 = new javax.swing.JSeparator();
@@ -115,9 +112,9 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         jSeparator30 = new javax.swing.JSeparator();
         button_buscar2 = new javax.swing.JButton();
         text_buscar1 = new javax.swing.JTextField();
-        comboBox_modelo1 = new javax.swing.JComboBox<>();
-        comboBox_modelo2 = new javax.swing.JComboBox<>();
-        comboBox_modelo3 = new javax.swing.JComboBox<>();
+        comboBox_modelo = new javax.swing.JComboBox<>();
+        comboBox_marca = new javax.swing.JComboBox<>();
+        comboBox_cilindrada = new javax.swing.JComboBox<>();
         pinturaMetalizadaSi = new javax.swing.JCheckBox();
         pinturaMetalizadaNo = new javax.swing.JCheckBox();
         fondo = new javax.swing.JLabel();
@@ -307,15 +304,6 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         obcionesAdicionales4.setText("Obciones Adicionales");
         jPanel1.add(obcionesAdicionales4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 880, 219, -1));
 
-        IdVehiculoUsado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        IdVehiculoUsado.setForeground(new java.awt.Color(59, 75, 82));
-        IdVehiculoUsado.setText("Id:");
-        jPanel1.add(IdVehiculoUsado, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 1430, -1, -1));
-
-        id1.setBorder(null);
-        jPanel1.add(id1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 1460, 258, -1));
-        jPanel1.add(jSeparator18, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 1480, 258, 10));
-
         ModeloVehiculoUsado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ModeloVehiculoUsado.setForeground(new java.awt.Color(59, 75, 82));
         ModeloVehiculoUsado.setText("Modelo:");
@@ -436,17 +424,17 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         });
         jPanel1.add(text_buscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, 210, -1));
 
-        comboBox_modelo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "CAMARO SIX SS", "ONIX TURBO RS MT", "LOGAN LIFE", "SANDERO LIFE+" }));
-        comboBox_modelo1.setBorder(null);
-        jPanel1.add(comboBox_modelo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, 310, -1));
+        comboBox_modelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "CAMARO SIX SS", "ONIX TURBO RS MT", "LOGAN LIFE", "SANDERO LIFE+" }));
+        comboBox_modelo.setBorder(null);
+        jPanel1.add(comboBox_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, 310, -1));
 
-        comboBox_modelo2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "CHEVROLET", "RENAULT", " NISSAN", " MAZDA", " KIA", "TOYOTA", " VOLKSWAGEN", " SUZUKI", " FORD", " MERCEDES BENZ " }));
-        comboBox_modelo2.setBorder(null);
-        jPanel1.add(comboBox_modelo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 700, 250, -1));
+        comboBox_marca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "CHEVROLET", "RENAULT", " NISSAN", " MAZDA", " KIA", "TOYOTA", " VOLKSWAGEN", " SUZUKI", " FORD", " MERCEDES BENZ " }));
+        comboBox_marca.setBorder(null);
+        jPanel1.add(comboBox_marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 700, 250, -1));
 
-        comboBox_modelo3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "CAMARO SIX SS (6.2L V8 SFI)", "ONIX TURBO(1.0T)", "LOGAN LIFE (Cilindraje (cm3) 1598)", "SANDERO LIFE + (Cilindraje (cm3) 1598)", " " }));
-        comboBox_modelo3.setBorder(null);
-        jPanel1.add(comboBox_modelo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 700, 310, -1));
+        comboBox_cilindrada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", " (6.2L V8 SFI)", "(1.0T)", " (cm³) 1598)", " ", " " }));
+        comboBox_cilindrada.setBorder(null);
+        jPanel1.add(comboBox_cilindrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 700, 310, -1));
 
         pinturaMetalizadaSi.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         pinturaMetalizadaSi.setText("SI");
@@ -507,7 +495,7 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
 
     private void button_buscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buscar2ActionPerformed
         
-        
+        botonBuscar2();
     }//GEN-LAST:event_button_buscar2ActionPerformed
 
     private void text_buscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_buscar1ActionPerformed
@@ -541,6 +529,35 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
         }
         return false;
     }
+    
+    private boolean botonBuscar2() {
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/plataforma", "root", "");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from catalogo where ID = ?");
+            preparedStatement.setString(1, text_buscar.getText().trim());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                text_idVehiculo.setText(resultSet.getString("ID"));
+                comboBox_marca.setSelectedItem(resultSet.getString("Nombre"));
+                comboBox_modelo.setSelectedItem(resultSet.getString("Apellido"));
+                comboBox_cilindrada.setSelectedItem(resultSet.getString("Celular"));
+                text_valor.setText(resultSet.getString("Correo"));
+               
+                
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Automovil no registrado");
+
+            }
+
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
 
     
 
@@ -558,7 +575,6 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
     private javax.swing.JLabel Garantia;
     private javax.swing.JLabel ID;
     private javax.swing.JLabel Id;
-    private javax.swing.JLabel IdVehiculoUsado;
     private javax.swing.JLabel Marca;
     private javax.swing.JLabel MarcaVehiculoUsado;
     private javax.swing.JLabel Matricula;
@@ -574,9 +590,9 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
     private javax.swing.JButton button_buscar;
     private javax.swing.JButton button_buscar2;
     private javax.swing.JTextField cilindradaVehiculoUsado;
-    private javax.swing.JComboBox<String> comboBox_modelo1;
-    private javax.swing.JComboBox<String> comboBox_modelo2;
-    private javax.swing.JComboBox<String> comboBox_modelo3;
+    private javax.swing.JComboBox<String> comboBox_cilindrada;
+    private javax.swing.JComboBox<String> comboBox_marca;
+    private javax.swing.JComboBox<String> comboBox_modelo;
     private javax.swing.JButton crearVenta;
     private javax.swing.JLabel datosDelCliente;
     private javax.swing.JLabel datosDelVehiculo1;
@@ -584,7 +600,6 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
     private javax.swing.JTextField fechaEntrega1;
     private javax.swing.JLabel fondo;
     private javax.swing.JTextField garantia;
-    private javax.swing.JTextField id1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
@@ -594,7 +609,6 @@ public class VendedorNuevaVenta extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator17;
-    private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator20;
